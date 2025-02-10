@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+
+.dropdown {
+    display: none; /* Masquer par défaut */
+    position: absolute;
+    top: 10vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    transition: 0.3s;
+}
+
+.dropdown.active {
+    display: flex; /* Afficher lorsque actif */
+    flex-direction: column;
+}
+
+.dropdown .links {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown .links a {
+    padding: 15px;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.dropdown .links a:hover {
+    background-color: #01eeff;
+}
+
+/* Media Queries pour les petits écrans */
+@media (max-width: 884px) {
+    .nav-container .links {
+        display: none; /* Masquer les liens de navigation par défaut */
+    }
+
+    .hamburg {
+        display: block; /* Afficher l'icône hamburger sur petits écrans */
+    }
+}
+
+.services {
+    width: 80%;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.service {
+    width: 30%; /* Largeur par défaut des services */
+    margin: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s;
+}
+
+.service:hover {
+    transform: translateY(-10px);
+}
+
+.service-content {
+    flex: 1;
+}
+
+.service h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.service p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.service button {
+    background-color: #01eeff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px; /* Uniformiser le padding */
+    font-size: 18px; /* Uniformiser la taille de la police */
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; /* S'assurer que le bouton prend toute la largeur */
+}
+
+.service button:hover {
+    background-color: #00bfff;
+}
+
+@media (max-width: 884px) {
+    .services-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service {
+        width: 80%; /* Ajuster la largeur des services sur petits écrans */
+    }
+}
+
+@media (max-width: 440px) {
+    .service h2 {
+        font-size: 20px;
+    }
+
+    .service p {
+        font-size: 16px;
+    }
+
+    .service button {
+        font-size: 16px; /* Uniformiser la taille du bouton */
+        padding: 10px 15px; /* Ajuster le padding pour uniformité */
+    }
+}
+
+

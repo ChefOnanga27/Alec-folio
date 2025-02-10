@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Alec Joraine</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- 🏠 NAVIGATION -->
+    <nav class="fixed top-0 w-full bg-gray-800/80 p-4 shadow-lg z-50 backdrop-blur-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">
+                Alec Joraine <span class="text-cyan-400">NANG BITEGHE</span>
+            </h1>
+            <div class="space-x-6 hidden md:flex">
+                <a href="#home" class="hover:text-cyan-400 transition">Accueil</a>
+                <a href="#about" class="hover:text-cyan-400 transition">À propos</a>
+                <a href="#skills" class="hover:text-cyan-400 transition">Compétences</a>
+                <a href="#projects" class="hover:text-cyan-400 transition">Projets</a>
+                <a href="#contact" class="hover:text-cyan-400 transition">Contact</a>
+            </div>
+            <button class="md:hidden text-white text-2xl"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- 🎬 HERO SECTION -->
+    <section id="home" class="h-screen flex items-center justify-center px-8 relative">
+        <canvas id="heroCanvas" class="absolute top-0 left-0 w-full h-full"></canvas>
+        <div class="relative z-10 flex flex-col md:flex-row items-center space-x-8 text-center md:text-left">
+            <!-- Image -->
+            <div class="w-40 h-40 md:w-56 md:h-56 flex-shrink-0">
+                <img src="./assets/Alec.jpg" alt="Alec Joraine"
+                     class="w-full h-full object-cover rounded-full shadow-lg border-4 border-cyan-500"
+                     data-aos="fade-right">
+            </div>
+            <!-- Texte -->
+            <div>
+                <h1 class="text-4xl font-bold" data-aos="fade-up">
+                    Bonjour, je suis <span class="text-cyan-400">Alec Joraine</span>
+                </h1>
+                <p class="mt-4 text-lg text-gray-300" data-aos="fade-up">
+                    Développeur backend passionné par la création d'applications web performantes.
+                </p>
+                <div class="mt-6 flex space-x-4 justify-center md:justify-start">
+                    <a href="https://wa.me/+24174692348" class="text-cyan-400 text-2xl hover:scale-110 transition"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://linkedin.com/in/alec-joraine-nang-biteghe-1b6b4a1b8/" class="text-cyan-400 text-2xl hover:scale-110 transition"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/chefOnanga27" class="text-cyan-400 text-2xl hover:scale-110 transition"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <!-- Bouton CV -->
+                <div class="mt-6 flex justify-center md:justify-start">
+                    <a href="./assets/cv.pdf" download class="px-6 py-2 bg-cyan-500 text-white rounded-md hover:bg-cyan-400 transition">
+                        Télécharger mon CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- 🔹 À PROPOS -->
+<section id="about" class="py-16 bg-gradient-to-r from-gray-900 to-gray-800 text-center relative overflow-hidden">
+    <!-- Fond dynamique -->
+    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-gray-800 via-transparent to-gray-900 opacity-50 z-0"></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <h2 class="text-4xl font-bold text-cyan-400 mb-6 tracking-wider" data-aos="fade-up">À propos de moi</h2>
+
+        <div class="flex justify-center items-center flex-col md:flex-row space-x-6 md:space-x-12 mb-12">
+            <!-- Image de profil -->
+            <div class="w-32 h-32 md:w-48 md:h-48 border-4 border-cyan-400 shadow-lg overflow-hidden mb-6 md:mb-0">
+                <img src="./assets/code.png" alt="Alec Joraine" class="w-full h-full object-cover">
+            </div>
+            
+            <!-- Texte -->
+            <div class="max-w-2xl mx-auto text-lg text-gray-300 leading-relaxed">
+                <p class="mb-6" data-aos="fade-up" data-aos-delay="200">
+                    Salut ! Je suis <span class="font-bold text-cyan-400">Alec Joraine NANG BITEGHE</span>, un développeur backend passionné en pleine ascension. Actuellement, je suis en instance de soutenance à l'École 241, où je perfectionne ma capacité à <strong>apprendre à apprendre</strong> et à trouver des solutions innovantes à des problèmes complexes.  
+                </p>
+                <p data-aos="fade-up" data-aos-delay="400">
+                    Mon parcours est guidé par la passion de créer des <strong>applications web performantes et optimisées</strong>, en utilisant des technologies comme <strong>Node.js</strong>, <strong>Express.js</strong>, et <strong>SQL</strong>.
+                </p>
+            </div>
+        </div>
+
+        <div class="max-w-2xl mx-auto text-lg text-gray-300 mt-8">
+            <p data-aos="fade-up" data-aos-delay="600">
+                Je cherche constamment à améliorer mes compétences, à explorer de nouvelles technologies et à travailler sur des projets qui poussent les limites de la création numérique. Ma philosophie ? Rendre l'expérience utilisateur aussi fluide et agréable que possible tout en gardant un haut niveau de performance.
+            </p>
+        </div>
+    </div>
+</section>
+
+  <!-- 💡 COMPÉTENCES -->
+<section id="skills" class="py-16 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900">
+    <div class="container mx-auto text-center">
+        <h2 class="text-4xl font-bold text-cyan-400 mb-8" data-aos="fade-up">Compétences</h2>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+            <!-- Project Management -->
+            <div class="p-6 bg-gray-700 rounded-lg shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 flex flex-col items-center" data-aos="zoom-in" data-aos-delay="200">
+                <img src="./assets/gestion.jpg" alt="Project Management" class="w-24 h-24 mb-4">
+                <p class="text-xl font-semibold text-gray-100">Gestion des Projets</p>
+            </div>
+
+            <!-- API Management -->
+            <div class="p-6 bg-gray-700 rounded-lg shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 flex flex-col items-center" data-aos="zoom-in" data-aos-delay="400">
+                <img src="./assets/api.jpg" alt="API Management" class="w-24 h-24 mb-4">
+                <p class="text-xl font-semibold text-gray-100">Gestion des API</p>
+            </div>
+
+            <!-- Authentication Systems -->
+            <div class="p-6 bg-gray-700 rounded-lg shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 flex flex-col items-center" data-aos="zoom-in" data-aos-delay="600">
+                <img src="./assets/auth.jpg" alt="Authentication Systems" class="w-24 h-24 mb-4">
+                <p class="text-xl font-semibold text-gray-100">Systèmes d'Authentification</p>
+            </div>
+
+            <!-- Database Management -->
+            <div class="p-6 bg-gray-700 rounded-lg shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 flex flex-col items-center" data-aos="zoom-in" data-aos-delay="800">
+                <img src="./assets/data.jpg" alt="Database Management" class="w-24 h-24 mb-4">
+                <p class="text-xl font-semibold text-gray-100">Création & Gestion des Bases de Données</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+  <!-- 🚀 PROJETS -->
+<section id="projects" class="py-16 text-center">
+    <h2 class="text-3xl font-bold text-cyan-400 mb-6">Projets</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Projet Médical -->
+        <div class="bg-gray-700 p-4 rounded-lg hover:scale-105 transition" data-aos="fade-up">
+            <img src="./assets/med.png" class="w-full rounded" alt="Projet Médical">
+            <h3 class="mt-4 text-lg font-bold">Projet Médical</h3>
+            <p>Une plateforme web de gestion de rendez-vous médicaux.</p>
+            <a href="https://github.com/ChefOnanga27/medconnect" class="text-cyan-400 text-sm mt-2 inline-block hover:underline">Voir sur GitHub</a>
+        </div>
+
+        <!-- Gestion des Événements -->
+        <div class="bg-gray-700 p-4 rounded-lg hover:scale-105 transition" data-aos="fade-up" data-aos-delay="200">
+            <img src="./assets/events.jpg" class="w-full rounded" alt="Gestion des Événements">
+            <h3 class="mt-4 text-lg font-bold">Gestion des Événements</h3>
+            <p>Une application web pour organiser et gérer des événements, avec des fonctionnalités de planification et de suivi.</p>
+            <a href="https://github.com/ChefOnanga27/evenementielback" class="text-cyan-400 text-sm mt-2 inline-block hover:underline">Voir sur GitHub</a>
+        </div>
+
+        <!-- Restaurant -->
+        <div class="bg-gray-700 p-4 rounded-lg hover:scale-105 transition" data-aos="fade-up" data-aos-delay="400">
+            <img src="./assets/restaurant.jpg" class="w-full rounded" alt="Restaurant">
+            <h3 class="mt-4 text-lg font-bold">Restaurant</h3>
+            <p>Une plateforme de gestion des commandes pour un restaurant, avec une interface utilisateur pour les clients et le personnel.</p>
+            <a href="https://github.com/ChefOnanga27/restaurant_backend" class="text-cyan-400 text-sm mt-2 inline-block hover:underline">Voir sur GitHub</a>
+        </div>
+
+        <!-- Parc Auto -->
+        <div class="bg-gray-700 p-4 rounded-lg hover:scale-105 transition" data-aos="fade-up" data-aos-delay="600">
+            <img src="./assets/parcauto.jpg" class="w-full rounded" alt="Parc Auto">
+            <h3 class="mt-4 text-lg font-bold">Parc Auto</h3>
+            <p>Un système de gestion de parc automobile pour suivre l'entretien et l'utilisation des véhicules.</p>
+            <a href="https://github.com/ChefOnanga27/parc_auto" class="text-cyan-400 text-sm mt-2 inline-block hover:underline">Voir sur GitHub</a>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="py-16 bg-gray-800">
+    <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-bold text-cyan-400 mb-6">Contact</h2>
+        <form id="contact-form" class="max-w-lg mx-auto">
+            <input type="text" id="name" name="name" placeholder="Nom" class="w-full p-2 mb-4 rounded bg-gray-700 text-white" required>
+            <input type="email" id="email" name="email" placeholder="Email" class="w-full p-2 mb-4 rounded bg-gray-700 text-white" required>
+            <textarea id="message" name="message" placeholder="Message" class="w-full p-2 mb-4 rounded bg-gray-700 text-white" required></textarea>
+            <button type="submit" class="px-6 py-2 bg-cyan-500 text-white rounded-md hover:bg-cyan-400">Envoyer</button>
+        </form>
+    </div>
+</section>
+<!-- Ajouter le script EmailJS -->
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+    (function(){
+        emailjs.init("YOUR_USER_ID");
+    })();
+</script>
+
+
+<script>
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(this);
+
+        emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", formData)
+            .then(function(response) {
+                alert('Message envoyé avec succès !');
+            }, function(error) {
+                alert('Erreur lors de l\'envoi du message.');
+            });
+    });
+</script>
+
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        let scene, camera, renderer, particles, geometry, material;
+
+        function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 5;
+
+            renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('heroCanvas'), alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            const numParticles = 500;
+
+            for (let i = 0; i < numParticles; i++) {
+                let x = (Math.random() - 0.5) * 10;
+                let y = (Math.random() - 0.5) * 10;
+                let z = (Math.random() - 0.5) * 10;
+                vertices.push(x, y, z);
+            }
+
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            material = new THREE.PointsMaterial({ color: 0x00ffff, size: 0.05 });
+
+            particles = new THREE.Points(geometry, material);
+            scene.add(particles);
+
+            animate();
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            particles.rotation.y += 0.001;
+            particles.rotation.x += 0.001;
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
+
+        init();
+    </script>
+</body>
+</html> 
