@@ -3,283 +3,916 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Alec Joraine</title>
+    <title>Alec Joraine | Développeur Full-Stack</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0EA5E9',
+                        secondary: '#7C3AED',
+                        accent: '#F59E0B',
+                        dark: '#0F172A',
+                        darker: '#020617'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px #0EA5E9' },
+                            '100%': { boxShadow: '0 0 40px #0EA5E9, 0 0 60px #0EA5E9' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(50px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-gray-900 text-white">
+<body class="bg-darker text-white overflow-x-hidden">
+    
+    <!-- CURSOR PERSONNALISÉ -->
+    <div id="cursor" class="fixed w-6 h-6 bg-primary/30 rounded-full pointer-events-none z-[9999] transition-all duration-300 mix-blend-difference"></div>
+    
+    <!-- NAVIGATION MODERNE -->
+    <nav class="fixed top-0 w-full bg-darker/90 backdrop-blur-xl border-b border-white/10 z-50 transition-all duration-500" id="navbar">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    AJ.dev
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link relative px-4 py-2 transition-all duration-300 hover:text-primary">Accueil</a>
+                    <a href="#about" class="nav-link relative px-4 py-2 transition-all duration-300 hover:text-primary">À propos</a>
+                    <a href="#skills" class="nav-link relative px-4 py-2 transition-all duration-300 hover:text-primary">Compétences</a>
+                    <a href="#projects" class="nav-link relative px-4 py-2 transition-all duration-300 hover:text-primary">Projets</a>
+                    <a href="#contact" class="nav-link relative px-4 py-2 transition-all duration-300 hover:text-primary">Contact</a>
+                </div>
 
-    <!-- 🏠 NAVIGATION -->
-    <nav class="fixed top-0 w-full bg-gray-800/80 p-4 shadow-lg z-50 backdrop-blur-lg">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-bold">
-                Alec Joraine <span class="text-cyan-400">NANG BITEGHE</span>
-            </h1>
-            <div class="space-x-6 hidden md:flex">
-                <a href="#home" class="hover:text-cyan-400 transition">Accueil</a>
-                <a href="#about" class="hover:text-cyan-400 transition">À propos</a>
-                <a href="#skills" class="hover:text-cyan-400 transition">Compétences</a>
-                <a href="#projects" class="hover:text-cyan-400 transition">Projets</a>
-                <a href="#contact" class="hover:text-cyan-400 transition">Contact</a>
+                <button id="menu-toggle" class="md:hidden text-2xl hover:text-primary transition-colors">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-            <button class="md:hidden text-white text-2xl"><i class="fa-solid fa-bars"></i></button>
+        </div>
+
+        <!-- MENU MOBILE -->
+        <div id="mobile-menu" class="md:hidden bg-darker/95 backdrop-blur-xl border-t border-white/10 transform -translate-y-full transition-transform duration-300">
+            <div class="px-6 py-4 space-y-4">
+                <a href="#home" class="block py-2 hover:text-primary transition-colors">Accueil</a>
+                <a href="#about" class="block py-2 hover:text-primary transition-colors">À propos</a>
+                <a href="#skills" class="block py-2 hover:text-primary transition-colors">Compétences</a>
+                <a href="#projects" class="block py-2 hover:text-primary transition-colors">Projets</a>
+                <a href="#contact" class="block py-2 hover:text-primary transition-colors">Contact</a>
+            </div>
         </div>
     </nav>
 
-    <!-- 🎬 HERO SECTION -->
-    <section id="home" class="h-screen flex items-center justify-center px-8 relative">
-        <canvas id="heroCanvas" class="absolute top-0 left-0 w-full h-full"></canvas>
-        <div class="relative z-10 flex flex-col md:flex-row items-center space-x-8 text-center md:text-left">
-            <!-- Image -->
-            <div class="w-40 h-40 md:w-56 md:h-56 flex-shrink-0">
-                <img src="./assets/Alec.jpg" alt="Alec Joraine"
-                     class="w-full h-full object-cover rounded-full shadow-lg border-4 border-cyan-500"
-                     data-aos="fade-right">
-            </div>
-            <!-- Texte -->
-            <div>
-                <h1 class="text-4xl font-bold" data-aos="fade-up">
-                    Bonjour, je suis <span class="text-cyan-400">Alec Joraine</span>
-                </h1>
-                <p class="mt-4 text-lg text-gray-300" data-aos="fade-up">
-                    Développeur web et mobile passionné par la création d'applications web performantes.
-                </p>
-                <div class="mt-6 flex space-x-4 justify-center md:justify-start">
-                    <a href="https://wa.me/+24174692348" class="text-cyan-400 text-2xl hover:scale-110 transition"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="https://linkedin.com/in/alec-joraine-nang-biteghe-1b6b4a1b8/" class="text-cyan-400 text-2xl hover:scale-110 transition"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://github.com/chefOnanga27" class="text-cyan-400 text-2xl hover:scale-110 transition"><i class="fa-brands fa-github"></i></a>
+    <!-- HERO SECTION IMMERSIVE -->
+    <section id="home" class="min-h-screen flex items-center relative overflow-hidden">
+        <canvas id="hero-canvas" class="absolute inset-0 w-full h-full"></canvas>
+        
+        <!-- Gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-br from-darker/80 via-transparent to-dark/60"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Contenu Principal -->
+                <div class="space-y-8">
+                    <div class="space-y-4 animate-slide-up">
+                        <p class="text-accent font-medium text-lg">Bonjour, je suis</p>
+                        <h1 class="text-5xl lg:text-7xl font-bold leading-tight">
+                            <span class="bg-gradient-to-r from-white via-primary to-secondary bg-clip-text text-transparent">
+                                Alec Joraine
+                            </span>
+                            <br>
+                            <span class="text-2xl lg:text-3xl text-gray-300 font-light">
+                                NANG BITEGHE
+                            </span>
+                        </h1>
+                        <p class="text-xl lg:text-2xl text-gray-400 font-light max-w-lg">
+                            Développeur <span class="text-primary font-semibold">Full-Stack</span> passionné par l'innovation technologique
+                        </p>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="flex space-x-8 py-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-primary" id="projects-count">0</div>
+                            <div class="text-gray-400 text-sm">Projets</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-secondary" id="experience-count">0</div>
+                            <div class="text-gray-400 text-sm">Années</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-accent" id="tech-count">0</div>
+                            <div class="text-gray-400 text-sm">Technologies</div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-6">
+                        <button class="group px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-full font-semibold text-white hover:shadow-2xl hover:shadow-primary/25 transition-all duration-300 transform hover:-translate-y-1">
+                            <span class="flex items-center justify-center space-x-2">
+                                <i class="fas fa-download group-hover:animate-bounce"></i>
+                                <span>Télécharger CV</span>
+                            </span>
+                        </button>
+                        <button class="px-8 py-4 border-2 border-primary text-primary rounded-full font-semibold hover:bg-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                            Mes Projets
+                        </button>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="flex space-x-6 pt-6">
+                        <a href="https://wa.me/+24174692348" class="social-icon text-2xl text-gray-400 hover:text-primary transition-all duration-300 transform hover:-translate-y-1">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/alec-joraine-nang-biteghe-1b6b4a1b8/" class="social-icon text-2xl text-gray-400 hover:text-primary transition-all duration-300 transform hover:-translate-y-1">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/chefOnanga27" class="social-icon text-2xl text-gray-400 hover:text-primary transition-all duration-300 transform hover:-translate-y-1">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
                 </div>
-                <!-- Bouton CV -->
-                <div class="mt-6 flex justify-center md:justify-start">
-                    <a href="./assets/cv.pdf" download class="px-6 py-2 bg-cyan-500 text-white rounded-md hover:bg-cyan-400 transition">
-                        Télécharger mon CV
-                    </a>
+
+                <!-- Image Profile -->
+                <div class="relative">
+                    <div class="relative w-80 h-80 mx-auto">
+                        <!-- Rings animés -->
+                        <div class="absolute inset-0 rounded-full border-2 border-primary/30 animate-pulse-slow"></div>
+                        <div class="absolute inset-4 rounded-full border-2 border-secondary/30 animate-pulse-slow" style="animation-delay: 1s;"></div>
+                        <div class="absolute inset-8 rounded-full border-2 border-accent/30 animate-pulse-slow" style="animation-delay: 2s;"></div>
+                        
+                        <!-- Image -->
+                        <div class="absolute inset-12 rounded-full overflow-hidden animate-glow">
+                            <img src="./assets/Alec.jpg" alt="Alec Joraine" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    
+                    <!-- Floating elements -->
+                    <div class="absolute -top-4 -left-4 w-8 h-8 bg-primary rounded-full animate-float opacity-60"></div>
+                    <div class="absolute -bottom-4 -right-4 w-6 h-6 bg-secondary rounded-full animate-float opacity-60" style="animation-delay: 1s;"></div>
+                    <div class="absolute top-1/2 -right-8 w-4 h-4 bg-accent rounded-full animate-float opacity-60" style="animation-delay: 2s;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
+            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À PROPOS SECTION -->
+    <section id="about" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-4">
+                    <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                        À propos de moi
+                    </span>
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Image et info -->
+                <div class="relative">
+                    <div class="relative bg-gradient-to-br from-dark to-darker rounded-2xl p-8 border border-white/10">
+                        <img src="./assets/code.jpg" alt="Coding" class="w-full h-64 object-cover rounded-xl mb-6">
+                        
+                        <!-- Tech badges -->
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 bg-primary/20 text-primary rounded-full text-sm font-medium">React</span>
+                            <span class="px-4 py-2 bg-secondary/20 text-secondary rounded-full text-sm font-medium">Node.js</span>
+                            <span class="px-4 py-2 bg-accent/20 text-accent rounded-full text-sm font-medium">Next.js</span>
+                            <span class="px-4 py-2 bg-green-500/20 text-green-500 rounded-full text-sm font-medium">Express</span>
+                             <span class="px-4 py-2 bg-green-500/20 text-green-500 rounded-full text-sm font-medium">Nest</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenu texte -->
+                <div class="space-y-6">
+                    <div class="space-y-4">
+                        <p class="text-lg text-gray-300 leading-relaxed">
+                            Salut ! Je suis <span class="text-primary font-bold">Alec Joraine NANG BITEGHE</span>, 
+                            un développeur web et mobile passionné en pleine ascension. Actuellement certifie de 
+                            l'<span class="text-secondary font-semibold">École 241</span>, je perfectionne ma capacité à 
+                            <strong>apprendre à apprendre</strong> et à résoudre des problèmes complexes.
+                        </p>
+                        
+                        <p class="text-lg text-gray-300 leading-relaxed">
+                            Mon parcours est guidé par la passion de créer des 
+                            <span class="text-accent font-semibold">applications web performantes et optimisées</span>, 
+                            en utilisant les dernières technologies du web moderne.
+                        </p>
+
+                        <p class="text-lg text-gray-300 leading-relaxed">
+                            Je cherche constamment à améliorer mes compétences et à explorer de nouvelles technologies. 
+                            Ma philosophie : rendre l'expérience utilisateur fluide et agréable tout en maintenant 
+                            des standards de performance élevés.
+                        </p>
+                    </div>
+
+                    <!-- Highlight boxes -->
+                    <div class="grid md:grid-cols-2 gap-4 mt-8">
+                        <div class="p-6 bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl border border-primary/20">
+                            <div class="text-primary text-2xl mb-3">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h4 class="font-bold text-lg mb-2">Développement Full-Stack</h4>
+                            <p class="text-gray-400 text-sm">Applications web complètes avec React, Node.js et bases de données</p>
+                        </div>
+                        
+                        <div class="p-6 bg-gradient-to-br from-secondary/10 to-secondary/5 rounded-xl border border-secondary/20">
+                            <div class="text-secondary text-2xl mb-3">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h4 class="font-bold text-lg mb-2">Applications Mobiles</h4>
+                            <p class="text-gray-400 text-sm">Solutions mobiles modernes et responsive design</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-  <!-- 🔹 À PROPOS -->
-<section id="about" class="py-16 bg-gradient-to-r from-gray-900 to-gray-800 text-center relative overflow-hidden">
-    <!-- Fond dynamique -->
-    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-gray-800 via-transparent to-gray-900 opacity-50 z-0"></div>
-    
-    <div class="container mx-auto px-6 relative z-10">
-        <h2 class="text-4xl font-bold text-cyan-400 mb-6 tracking-wider" data-aos="fade-up">À propos de moi</h2>
-
-        <div class="flex justify-center items-center flex-col md:flex-row space-x-6 md:space-x-12 mb-12">
-            <!-- Image de profil -->
-            <div class="w-32 h-32 md:w-48 md:h-48 border-4 border-cyan-400 shadow-lg overflow-hidden mb-6 md:mb-0">
-                <img src="./assets/code.png" alt="Alec Joraine" class="w-full h-full object-cover">
-            </div>
-            
-            <!-- Texte -->
-            <div class="max-w-2xl mx-auto text-lg text-gray-300 leading-relaxed">
-                <p class="mb-6" data-aos="fade-up" data-aos-delay="200">
-                    Salut ! Je suis <span class="font-bold text-cyan-400">Alec Joraine NANG BITEGHE</span>, un développeur web et mobile  passionné en pleine ascension. Actuellement, je suis en instance de soutenance à l'École 241, où je perfectionne ma capacité à <strong>apprendre à apprendre</strong> et à trouver des solutions innovantes à des problèmes complexes.  
-                </p>
-                <p data-aos="fade-up" data-aos-delay="400">
-                    Mon parcours est guidé par la passion de créer des <strong>applications web performantes et optimisées</strong>, en utilisant des technologies comme,<strong>React/Nextjs</strong>, <strong>Node.js</strong>, <strong>Express.js</strong>, et <strong>SQL</strong>.
+    <!-- COMPÉTENCES SECTION -->
+    <section id="skills" class="py-20 bg-gradient-to-br from-dark to-darker">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-4">
+                    <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                        Compétences
+                    </span>
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    Technologies et outils que j'utilise pour créer des expériences digitales exceptionnelles
                 </p>
             </div>
-        </div>
 
-        <div class="max-w-2xl mx-auto text-lg text-gray-300 mt-8">
-            <p data-aos="fade-up" data-aos-delay="600">
-                Je cherche constamment à améliorer mes compétences, à explorer de nouvelles technologies et à travailler sur des projets qui poussent les limites de la création numérique. Ma philosophie ? Rendre l'expérience utilisateur aussi fluide et agréable que possible tout en gardant un haut niveau de performance.
-            </p>
-        </div>
-    </div>
-</section>
+            <!-- Grille des compétences -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+                <!-- Frontend -->
+                <div class="skill-card group relative p-8 bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl border border-white/10 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2">
+                    <div class="text-center">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center group-hover:animate-pulse">
+                            <img src="./assets/nextjs.png" alt="Next.js" class="w-12 h-12 object-contain">
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Frontend</h3>
+                        <p class="text-gray-400 text-sm mb-4">Interfaces utilisateur modernes</p>
+                        <div class="space-y-2 text-sm text-gray-500">
+                            <div>React • Next.js</div>
+                            <div>Tailwind CSS</div>
+                            <div>JavaScript ES6+</div>
+                        </div>
+                    </div>
+                </div>
 
-  <!-- 💡 COMPÉTENCES -->
-<section id="skills" class="py-16 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900">
-    <div class="container mx-auto text-center">
-        <h2 class="text-4xl font-bold text-cyan-400 mb-8" data-aos="fade-up">Compétences</h2>
-        
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
-            <!-- Project Management -->
-            <div class="p-6 bg-gray-700 rounded-lg shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 flex flex-col items-center" data-aos="zoom-in" data-aos-delay="200">
-                <img src="./assets/gestion.jpg" alt="Project Management" class="w-24 h-24 mb-4">
-                <p class="text-xl font-semibold text-gray-100">Gestion des Projets</p>
+                <!-- Backend -->
+                <div class="skill-card group relative p-8 bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl border border-white/10 hover:border-secondary/50 transition-all duration-500 hover:-translate-y-2">
+                    <div class="text-center">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-secondary/20 to-secondary/10 rounded-2xl flex items-center justify-center group-hover:animate-pulse">
+                            <img src="./assets/api.jpg" alt="API" class="w-12 h-12 object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-secondary transition-colors">Backend</h3>
+                        <p class="text-gray-400 text-sm mb-4">APIs robustes et sécurisées</p>
+                        <div class="space-y-2 text-sm text-gray-500">
+                            <div>Node.js • Express</div>
+                            <div>API REST</div>
+                            <div>Authentication JWT</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Database -->
+                <div class="skill-card group relative p-8 bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl border border-white/10 hover:border-accent/50 transition-all duration-500 hover:-translate-y-2">
+                    <div class="text-center">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-accent/20 to-accent/10 rounded-2xl flex items-center justify-center group-hover:animate-pulse">
+                            <img src="./assets/data.jpg" alt="Database" class="w-12 h-12 object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-accent transition-colors">Base de Données</h3>
+                        <p class="text-gray-400 text-sm mb-4">Gestion des données efficace</p>
+                        <div class="space-y-2 text-sm text-gray-500">
+                            <div>MySQL • PostgreSQL</div>
+                            <div>MongoDB</div>
+                            <div>Database Design</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DevOps -->
+                <div class="skill-card group relative p-8 bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl border border-white/10 hover:border-green-500/50 transition-all duration-500 hover:-translate-y-2">
+                    <div class="text-center">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-green-500/20 to-green-500/10 rounded-2xl flex items-center justify-center group-hover:animate-pulse">
+                            <img src="./assets/auth.jpg" alt="Auth" class="w-12 h-12 object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-green-500 transition-colors">Sécurité</h3>
+                        <p class="text-gray-400 text-sm mb-4">Authentification avancée</p>
+                        <div class="space-y-2 text-sm text-gray-500">
+                            <div>OAuth • JWT</div>
+                            <div>Bcrypt Hashing</div>
+                            <div>Security Best Practices</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Management -->
+                <div class="skill-card group relative p-8 bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl border border-white/10 hover:border-purple-500/50 transition-all duration-500 hover:-translate-y-2">
+                    <div class="text-center">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-purple-500/20 to-purple-500/10 rounded-2xl flex items-center justify-center group-hover:animate-pulse">
+                            <img src="./assets/gestion.jpg" alt="Management" class="w-12 h-12 object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-purple-500 transition-colors">Gestion Projet</h3>
+                        <p class="text-gray-400 text-sm mb-4">Méthodologies agiles</p>
+                        <div class="space-y-2 text-sm text-gray-500">
+                            <div>Scrum • Kanban</div>
+                            <div>Git Workflow</div>
+                            <div>Team Collaboration</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJETS SECTION -->
+    <section id="projects" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-4">
+                    <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                        Mes Projets
+                    </span>
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    Découvrez une sélection de projets qui démontrent mes compétences et ma passion pour le développement
+                </p>
             </div>
 
-            <!-- API Management -->
-            <div class="p-6 bg-gray-700 rounded-lg shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 flex flex-col items-center" data-aos="zoom-in" data-aos-delay="400">
-                <img src="./assets/api.jpg" alt="API Management" class="w-24 h-24 mb-4">
-                <p class="text-xl font-semibold text-gray-100">Gestion des API</p>
+            <!-- Grille des projets -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Projet Ecommerce -->
+                <div class="project-card group relative bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2">
+                    <div class="relative overflow-hidden">
+                        <img src="./assets/FBK PUB 1.png" alt="Projet Médical" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 right-4 bg-accent/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-accent font-medium">
+                            E-commerce
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-accent transition-colors">Artiz</h3>
+                        <p class="text-gray-400 text-sm mb-4">Plateforme de vente en ligne de vente d'oeuvres artisanales</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-xs">React.js</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">Tailwind</span>
+                            <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs">API</span>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <a href="https://artiz-ia.vercel.app/" class="flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span class="text-sm">Voir le site</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cuisine Platform -->
+                <div class="project-card group relative bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2">
+                    <div class="relative overflow-hidden">
+                        <img src="/assets/cuisine.png" alt="Cuisine" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 right-4 bg-primary/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-primary font-medium">
+                            Live
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Secret culinaire</h3>
+                        <p class="text-gray-400 text-sm mb-4">Plateforme de partage de recettes avec communauté d'utilisateurs et système de notation</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">React</span>
+                            <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-xs">Social</span>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-500 rounded-full text-xs">Community</span>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <a href="https://secret-culinaire.vercel.app/" class="flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span class="text-sm">Voir le site</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paradise Numerique -->
+                <div class="project-card group relative bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl overflow-hidden border border-white/10 hover:border-secondary/50 transition-all duration-500 hover:-translate-y-2">
+                    <div class="relative overflow-hidden">
+                        <img src="/assets/logo.png" alt="Parc Auto" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 right-4 bg-secondary/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-secondary font-medium">
+                            Management
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-secondary transition-colors">Site vitrine</h3>
+                        <p class="text-gray-400 text-sm mb-4">Site vitrine mettant en avant les services de cette agences</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs">Devis</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">Analytics</span>
+                            <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-xs">Tracking</span>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <a href="https://paradisenumerique.vercel.app/" class="flex items-center space-x-2 text-secondary hover:text-secondary/80 transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span class="text-sm">Voir le site</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- commerce storegabon -->
+                <div class="project-card group relative bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-500 hover:-translate-y-2">
+                    <div class="relative overflow-hidden">
+                        <img src="./assets/store.jpg" alt="École 241" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 right-4 bg-accent/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-accent font-medium">
+                            e-commerce
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-accent transition-colors">Store Gabon Website</h3>
+                        <p class="text-gray-400 text-sm mb-4">Site web institutionnel moderne avec présentation des formations et système d'inscription</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-xs">React.js</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">SEO</span>
+                            <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs">Responsive</span>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <a href="https://storegabon.vercel.app/" class="flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span class="text-sm">Voir le site</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-dark to-darker relative">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25px 25px, rgba(14, 165, 233, 0.3) 2px, transparent 0), radial-gradient(circle at 75px 75px, rgba(124, 58, 237, 0.3) 2px, transparent 0); background-size: 100px 100px;"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-4">
+                    <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                        Travaillons Ensemble
+                    </span>
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    Prêt à donner vie à votre projet ? Contactez-moi et discutons de vos idées !
+                </p>
             </div>
 
-            <!-- Authentication Systems -->
-            <div class="p-6 bg-gray-700 rounded-lg shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 flex flex-col items-center" data-aos="zoom-in" data-aos-delay="600">
-                <img src="./assets/auth.jpg" alt="Authentication Systems" class="w-24 h-24 mb-4">
-                <p class="text-xl font-semibold text-gray-100">Systèmes d'Authentification</p>
+            <div class="grid lg:grid-cols-2 gap-16 items-start">
+                <!-- Informations de contact -->
+                <div class="space-y-8">
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4 p-6 bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl border border-white/10">
+                            <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-primary text-xl">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">Email</h3>
+                                <p class="text-gray-400">nangbiteghe@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-6 bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl border border-white/10">
+                            <div class="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center text-secondary text-xl">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">WhatsApp</h3>
+                                <p class="text-gray-400">+241 74 69 23 48</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-6 bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl border border-white/10">
+                            <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center text-accent text-xl">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">Localisation</h3>
+                                <p class="text-gray-400">Libreville, Gabon</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="flex space-x-4">
+                        <a href="https://linkedin.com/in/alec-joraine-nang-biteghe-1b6b4a1b8/" class="w-12 h-12 bg-primary/20 hover:bg-primary rounded-full flex items-center justify-center text-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/chefOnanga27" class="w-12 h-12 bg-secondary/20 hover:bg-secondary rounded-full flex items-center justify-center text-secondary hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://wa.me/+24174692348" class="w-12 h-12 bg-accent/20 hover:bg-accent rounded-full flex items-center justify-center text-accent hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Formulaire de contact -->
+                <div class="bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl p-8 border border-white/10">
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="block text-sm font-medium text-gray-300">Nom complet</label>
+                                <input type="text" name="name" required class="w-full px-4 py-3 bg-darker/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-primary focus:outline-none transition-colors">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="block text-sm font-medium text-gray-300">Email</label>
+                                <input type="email" name="email" required class="w-full px-4 py-3 bg-darker/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-primary focus:outline-none transition-colors">
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-300">Sujet</label>
+                            <input type="text" name="subject" required class="w-full px-4 py-3 bg-darker/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-primary focus:outline-none transition-colors">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-300">Message</label>
+                            <textarea name="message" rows="6" required class="w-full px-4 py-3 bg-darker/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-primary focus:outline-none transition-colors resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="group w-full px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-xl font-semibold text-white hover:shadow-2xl hover:shadow-primary/25 transition-all duration-300 transform hover:-translate-y-1">
+                            <span class="flex items-center justify-center space-x-2">
+                                <span>Envoyer le message</span>
+                                <i class="fas fa-paper-plane group-hover:translate-x-1 transition-transform"></i>
+                            </span>
+                        </button>
+                    </form>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Database Management -->
-            <div class="p-6 bg-gray-700 rounded-lg shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 flex flex-col items-center" data-aos="zoom-in" data-aos-delay="800">
-                <img src="./assets/data.jpg" alt="Database Management" class="w-24 h-24 mb-4">
-                <p class="text-xl font-semibold text-gray-100">Création & Gestion des Bases de Données</p>
+    <!-- FOOTER -->
+    <footer class="py-12 bg-darker border-t border-white/10">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <div class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">
+                    AJ.dev
+                </div>
+                <p class="text-gray-400 mb-6">
+                    Développeur Full-Stack passionné par l'innovation et l'excellence technique
+                </p>
+                <div class="flex justify-center space-x-6 mb-6">
+                    <a href="#home" class="text-gray-400 hover:text-primary transition-colors">Accueil</a>
+                    <a href="#about" class="text-gray-400 hover:text-primary transition-colors">À propos</a>
+                    <a href="#skills" class="text-gray-400 hover:text-primary transition-colors">Compétences</a>
+                    <a href="#projects" class="text-gray-400 hover:text-primary transition-colors">Projets</a>
+                    <a href="#contact" class="text-gray-400 hover:text-primary transition-colors">Contact</a>
+                </div>
+                <div class="text-gray-500 text-sm">
+                    © 2024 Alec Joraine NANG BITEGHE. Tous droits réservés.
+                </div>
             </div>
-
-            <div class="p-6 bg-gray-700 rounded-lg shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 flex flex-col items-center" data-aos="zoom-in" data-aos-delay="800">
-                <img src="./assets/nextjs.png" alt="Database Management" class="w-24 h-24 mb-4">
-                <p class="text-xl font-semibold text-gray-100">Maquetage et integration </p>
-            </div>
         </div>
-    </div>
-</section>
+    </footer>
 
+    <!-- Scripts -->
+    <script>
+        // Cursor personnalisé
+        const cursor = document.getElementById('cursor');
+        let mouseX = 0, mouseY = 0;
 
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
 
-  <!-- 🚀 PROJETS -->
-<section id="projects" class="py-16 text-center">
-    <h2 class="text-3xl font-bold text-cyan-400 mb-6">Projets</h2>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Projet Médical -->
-        <div class="bg-gray-700 p-4 rounded-lg hover:scale-105 transition" data-aos="fade-up">
-            <img src="./assets/med.png" class="w-full rounded" alt="Projet Médical">
-            <h3 class="mt-4 text-lg font-bold">Projet Médical</h3>
-            <p>Une plateforme web de gestion de rendez-vous médicaux.</p>
-            <a href="https://github.com/ChefOnanga27/medconnect" class="text-cyan-400 text-sm mt-2 inline-block hover:underline">Voir sur GitHub</a>
-        </div>
+        function updateCursor() {
+            cursor.style.left = mouseX - 12 + 'px';
+            cursor.style.top = mouseY - 12 + 'px';
+            requestAnimationFrame(updateCursor);
+        }
+        updateCursor();
 
-        <!-- Gestion des Événements -->
-        <div class="bg-gray-700 p-4 rounded-lg hover:scale-105 transition" data-aos="fade-up" data-aos-delay="200">
-            <img src="./assets/events.jpg" class="w-full rounded" alt="Gestion des Événements">
-            <h3 class="mt-4 text-lg font-bold">Gestion des Événements</h3>
-            <p>Une application web pour organiser et gérer des événements, avec des fonctionnalités de planification et de suivi.</p>
-            <a href="https://github.com/ChefOnanga27/evenementielback" class="text-cyan-400 text-sm mt-2 inline-block hover:underline">Voir sur GitHub</a>
-        </div>
+        // Navigation mobile
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-        <!-- Restaurant -->
-        <div class="bg-gray-700 p-4 rounded-lg hover:scale-105 transition" data-aos="fade-up" data-aos-delay="400">
-            <img src="./assets/restaurant.jpg" class="w-full rounded" alt="Restaurant">
-            <h3 class="mt-4 text-lg font-bold">Restaurant</h3>
-            <p>Une plateforme de gestion des commandes pour un restaurant, avec une interface utilisateur pour les clients et le personnel.</p>
-            <a href="https://github.com/ChefOnanga27/restaurant_backend" class="text-cyan-400 text-sm mt-2 inline-block hover:underline">Voir sur GitHub</a>
-        </div>
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('-translate-y-full');
+        });
 
-         <!-- Restaurant -->
-         <div class="bg-gray-700 p-4 rounded-lg hover:scale-105 transition" data-aos="fade-up" data-aos-delay="400">
-            <img src="./assets/cuisine.png" class="w-full rounded" alt="Restaurant">
-            <h3 class="mt-4 text-lg font-bold">Restaurant</h3>
-            <p>Une plateforme de gestion de partage po des plats</p>
-            <a href="https://awanawintche-6waj.vercel.app/" class="text-cyan-400 text-sm mt-2 inline-block hover:underline">Voir le site</a>
-        </div>
-
-        <!-- Parc Auto -->
-        <div class="bg-gray-700 p-4 rounded-lg hover:scale-105 transition" data-aos="fade-up" data-aos-delay="600">
-            <img src="./assets/parcauto.jpg" class="w-full rounded" alt="Parc Auto">
-            <h3 class="mt-4 text-lg font-bold">Parc Auto</h3>
-            <p>Un système de gestion de parc automobile pour suivre l'entretien et l'utilisation des véhicules.</p>
-            <a href="https://github.com/ChefOnanga27/parc_auto" class="text-cyan-400 text-sm mt-2 inline-block hover:underline">Voir sur GitHub</a>
-        </div>
-
-         <!-- Parc Auto -->
-        <div class="bg-gray-700 p-4 rounded-lg hover:scale-105 transition" data-aos="fade-up" data-aos-delay="600">
-            <img src="./assets/ecole214.jpg" class="w-full rounded" alt="Parc Auto">
-            <h3 class="mt-4 text-lg font-bold">Site web Ecole 241</h3>
-            <p>Site de l'ecole 241 developpé avec nextjs qui met en avant le fonctionnement et les offres de l'ecole 241.</p>
-            <a href="https://github.com/ChefOnanga27/Site-ecole241" class="text-cyan-400 text-sm mt-2 inline-block hover:underline">Voir sur GitHub</a>
-        </div>
-          <!-- Parc Auto -->
-        <div class="bg-gray-700 p-4 rounded-lg hover:scale-105 transition" data-aos="fade-up" data-aos-delay="600">
-            <img src="./assets/logo.jpg" class="w-full rounded" alt="Parc Auto">
-            <h3 class="mt-4 text-lg font-bold">MachlieEclat</h3>
-            <p>Site ecommerce developpe avec nextjs </p>
-            <a href="https://machlieeclat.netlify.app/" class="text-cyan-400 text-sm mt-2 inline-block hover:underline">Voir le site</a>
-        </div>
-    </div>
-</section>
-
-<section id="contact" class="py-16 bg-gray-800">
-    <div class="container mx-auto text-center">
-        <h2 class="text-3xl font-bold text-cyan-400 mb-6">Contact</h2>
-        <form id="contact-form" class="max-w-lg mx-auto">
-            <input type="text" id="name" name="name" placeholder="Nom" class="w-full p-2 mb-4 rounded bg-gray-700 text-white" required>
-            <input type="email" id="email" name="email" placeholder="Email" class="w-full p-2 mb-4 rounded bg-gray-700 text-white" required>
-            <textarea id="message" name="message" placeholder="Message" class="w-full p-2 mb-4 rounded bg-gray-700 text-white" required></textarea>
-            <button type="submit" class="px-6 py-2 bg-cyan-500 text-white rounded-md hover:bg-cyan-400">Envoyer</button>
-        </form>
-    </div>
-</section>
-<!-- Ajouter le script EmailJS -->
-<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-    (function(){
-        emailjs.init("YOUR_USER_ID");
-    })();
-</script>
-
-
-<script>
-    document.getElementById("contact-form").addEventListener("submit", function(event) {
-        event.preventDefault();
-
-        const formData = new FormData(this);
-
-        emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", formData)
-            .then(function(response) {
-                alert('Message envoyé avec succès !');
-            }, function(error) {
-                alert('Erreur lors de l\'envoi du message.');
+        // Navigation smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Fermer le menu mobile après clic
+                mobileMenu.classList.add('-translate-y-full');
             });
-    });
-</script>
+        });
 
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-darker/95');
+            } else {
+                navbar.classList.remove('bg-darker/95');
+            }
+        });
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-        let scene, camera, renderer, particles, geometry, material;
+        // Animation des compteurs
+        function animateCounter(element, target) {
+            let count = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                count += increment;
+                if (count >= target) {
+                    count = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(count);
+            }, 20);
+        }
 
-        function init() {
+        // Observer pour déclencher les animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animer les compteurs
+                    const projectsCount = document.getElementById('projects-count');
+                    const experienceCount = document.getElementById('experience-count');
+                    const techCount = document.getElementById('tech-count');
+
+                    if (entry.target.contains(projectsCount)) {
+                        animateCounter(projectsCount, 12);
+                        animateCounter(experienceCount, 3);
+                        animateCounter(techCount, 15);
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(document.getElementById('home'));
+
+        // Animation Three.js pour le hero
+        let scene, camera, renderer, particles;
+
+        function initThreeJS() {
             scene = new THREE.Scene();
             camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.z = 5;
-
-            renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('heroCanvas'), alpha: true });
+            
+            const canvas = document.getElementById('hero-canvas');
+            renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
 
-            geometry = new THREE.BufferGeometry();
+            // Particules
+            const geometry = new THREE.BufferGeometry();
             const vertices = [];
-            const numParticles = 500;
+            const colors = [];
 
-            for (let i = 0; i < numParticles; i++) {
-                let x = (Math.random() - 0.5) * 10;
-                let y = (Math.random() - 0.5) * 10;
-                let z = (Math.random() - 0.5) * 10;
-                vertices.push(x, y, z);
+            for (let i = 0; i < 1000; i++) {
+                vertices.push(
+                    (Math.random() - 0.5) * 2000,
+                    (Math.random() - 0.5) * 2000,
+                    (Math.random() - 0.5) * 2000
+                );
+
+                const color = new THREE.Color();
+                color.setHSL(0.5 + Math.random() * 0.5, 0.7, 0.5);
+                colors.push(color.r, color.g, color.b);
             }
 
             geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-            material = new THREE.PointsMaterial({ color: 0x00ffff, size: 0.05 });
+            geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+            const material = new THREE.PointsMaterial({
+                size: 3,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.8
+            });
 
             particles = new THREE.Points(geometry, material);
             scene.add(particles);
+
+            camera.position.z = 1000;
 
             animate();
         }
 
         function animate() {
             requestAnimationFrame(animate);
+            
+            particles.rotation.x += 0.0005;
             particles.rotation.y += 0.001;
-            particles.rotation.x += 0.001;
+
             renderer.render(scene, camera);
         }
 
+        // Gestion du redimensionnement
         window.addEventListener('resize', () => {
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
+            if (renderer) {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
         });
 
-        init();
+        // Initialiser Three.js
+        initThreeJS();
+
+        // Formulaire de contact
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulation d'envoi
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = `
+                <span class="flex items-center justify-center space-x-2">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>Envoi en cours...</span>
+                </span>
+            `;
+            button.disabled = true;
+
+            setTimeout(() => {
+                button.innerHTML = `
+                    <span class="flex items-center justify-center space-x-2">
+                        <i class="fas fa-check"></i>
+                        <span>Message envoyé !</span>
+                    </span>
+                `;
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    this.reset();
+                }, 2000);
+            }, 2000);
+        });
+
+        // Lazy loading pour les images
+        const images = document.querySelectorAll('img');
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.classList.add('animate-fade-in');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+
+        images.forEach(img => imageObserver.observe(img));
+
+        // Active link highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-primary');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('text-primary');
+                }
+            });
+        });
     </script>
 </body>
-</html> 
+</html>transition-opacity duration-300"></div>
+                        <div class="absolute top-4 right-4 bg-primary/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-primary font-medium">
+                            Web App
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">MedConnect</h3>
+                        <p class="text-gray-400 text-sm mb-4">Plateforme de gestion de rendez-vous médicaux avec système de notifications en temps réel</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">React</span>
+                            <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs">Node.js</span>
+                            <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-xs">MySQL</span>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <a href="https://github.com/ChefOnanga27/medconnect" class="flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors">
+                                <i class="fab fa-github"></i>
+                                <span class="text-sm">Code source</span>
+                            </a>
+                            <button class="px-4 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary hover:text-white transition-all duration-300 text-sm">
+                                Voir plus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gestion Événements -->
+                <div class="project-card group relative bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl overflow-hidden border border-white/10 hover:border-secondary/50 transition-all duration-500 hover:-translate-y-2">
+                    <div class="relative overflow-hidden">
+                        <img src="./assets/events.jpg" alt="Événements" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 right-4 bg-secondary/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-secondary font-medium">
+                            Full-Stack
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-secondary transition-colors">EventManager</h3>
+                        <p class="text-gray-400 text-sm mb-4">Application complète de gestion d'événements avec système de réservation et paiement</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs">Express</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">React</span>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-500 rounded-full text-xs">MongoDB</span>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <a href="https://github.com/ChefOnanga27/evenementielback" class="flex items-center space-x-2 text-secondary hover:text-secondary/80 transition-colors">
+                                <i class="fab fa-github"></i>
+                                <span class="text-sm">Code source</span>
+                            </a>
+                            <button class="px-4 py-2 bg-secondary/10 text-secondary rounded-lg hover:bg-secondary hover:text-white transition-all duration-300 text-sm">
+                                Voir plus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Restaurant -->
+                <div class="project-card group relative bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-500 hover:-translate-y-2">
+                    <div class="relative overflow-hidden">
+                        <img src="./assets/restaurant.jpg" alt="Restaurant" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100
