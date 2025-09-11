@@ -75,16 +75,18 @@
             </div>
         </div>
 
-        <!-- MENU MOBILE -->
-        <div id="mobile-menu" class="md:hidden bg-darker/95 backdrop-blur-xl border-t border-white/10 transform -translate-y-full transition-transform duration-300">
-            <div class="px-6 py-4 space-y-4">
-                <a href="#home" class="block py-2 hover:text-primary transition-colors">Accueil</a>
-                <a href="#about" class="block py-2 hover:text-primary transition-colors">À propos</a>
-                <a href="#skills" class="block py-2 hover:text-primary transition-colors">Compétences</a>
-                <a href="#projects" class="block py-2 hover:text-primary transition-colors">Projets</a>
-                <a href="#contact" class="block py-2 hover:text-primary transition-colors">Contact</a>
-            </div>
-        </div>
+<!-- MENU MOBILE -->
+<div id="mobile-menu" 
+     class="fixed inset-x-0 top-0 md:hidden bg-gray-900/95 backdrop-blur-xl border-b border-white/10 transform -translate-y-full transition-transform duration-300 z-50">
+  <div class="px-6 py-6 space-y-4">
+    <a href="#home" class="block py-2 text-white hover:text-cyan-400 transition-colors">Accueil</a>
+    <a href="#about" class="block py-2 text-white hover:text-cyan-400 transition-colors">À propos</a>
+    <a href="#skills" class="block py-2 text-white hover:text-cyan-400 transition-colors">Compétences</a>
+    <a href="#projects" class="block py-2 text-white hover:text-cyan-400 transition-colors">Projets</a>
+    <a href="#contact" class="block py-2 text-white hover:text-cyan-400 transition-colors">Contact</a>
+  </div>
+</div>
+
     </nav>
 
     <!-- HERO SECTION IMMERSIVE -->
@@ -134,10 +136,13 @@
                     <!-- CTA Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4 pt-6">
                         <button class="group px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-full font-semibold text-white hover:shadow-2xl hover:shadow-primary/25 transition-all duration-300 transform hover:-translate-y-1">
-                            <span class="flex items-center justify-center space-x-2">
-                                <i class="fas fa-download group-hover:animate-bounce"></i>
-                                <span>Télécharger CV</span>
-                            </span>
+                           <a href="./assets/cv.pdf" download
+     class="group px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full font-semibold text-white hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 transform hover:-translate-y-1">
+      <span class="flex items-center justify-center space-x-2">
+          <i class="fas fa-download group-hover:animate-bounce"></i>
+          <span>Télécharger CV</span>
+      </span>
+  </a>
                         </button>
                         <button class="px-8 py-4 border-2 border-primary text-primary rounded-full font-semibold hover:bg-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1">
                             Mes Projets
@@ -415,7 +420,7 @@
                         <img src="/assets/cuisine.png" alt="Cuisine" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="absolute top-4 right-4 bg-primary/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-primary font-medium">
-                            Live
+                            Gastronomie
                         </div>
                     </div>
                     
@@ -444,7 +449,7 @@
                         <img src="/assets/logo.png" alt="Parc Auto" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="absolute top-4 right-4 bg-secondary/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-secondary font-medium">
-                            Management
+                            Service
                         </div>
                     </div>
                     
@@ -489,6 +494,63 @@
 
                         <div class="flex items-center justify-between">
                             <a href="https://storegabon.vercel.app/" class="flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span class="text-sm">Voir le site</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet en cours -->
+                 <div class="project-card group relative bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-500 hover:-translate-y-2">
+                    <div class="relative overflow-hidden">
+                        <img src="./assets/logement.jpg" alt="École 241" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 right-4 bg-accent/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-accent font-medium">
+                            Logement
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-accent transition-colors">Je demenage</h3>
+                        <p class="text-gray-400 text-sm mb-4">La plateforme gabonaise pour trouver votre nouveau logement</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-xs">React.js</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">SEO</span>
+                            <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs">Responsive</span>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <a href="https://je-demenage.vercel.app/" class="flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span class="text-sm">Voir le site</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card group relative bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-500 hover:-translate-y-2">
+                    <div class="relative overflow-hidden">
+                        <img src="./assets/med.png" alt="École 241" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 right-4 bg-accent/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-accent font-medium">
+                            e-Sante
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-accent transition-colors">Medconnect</h3>
+                        <p class="text-gray-400 text-sm mb-4">Trouvez facilement des hôpitaux, cliniques, médecins spécialistes et pharmacies. Prenez rendez-vous en ligne et gérez vos documents médicaux en toute sécurité..</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-xs">React.js</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">SEO</span>
+                            <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs">Responsive</span>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <a href="https://med-connect2.vercel.app/" class="flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors">
                                 <i class="fas fa-external-link-alt"></i>
                                 <span class="text-sm">Voir le site</span>
                             </a>
@@ -851,68 +913,3 @@
         });
     </script>
 </body>
-</html>transition-opacity duration-300"></div>
-                        <div class="absolute top-4 right-4 bg-primary/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-primary font-medium">
-                            Web App
-                        </div>
-                    </div>
-                    
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">MedConnect</h3>
-                        <p class="text-gray-400 text-sm mb-4">Plateforme de gestion de rendez-vous médicaux avec système de notifications en temps réel</p>
-                        
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">React</span>
-                            <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs">Node.js</span>
-                            <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-xs">MySQL</span>
-                        </div>
-
-                        <div class="flex items-center justify-between">
-                            <a href="https://github.com/ChefOnanga27/medconnect" class="flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors">
-                                <i class="fab fa-github"></i>
-                                <span class="text-sm">Code source</span>
-                            </a>
-                            <button class="px-4 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary hover:text-white transition-all duration-300 text-sm">
-                                Voir plus
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gestion Événements -->
-                <div class="project-card group relative bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl overflow-hidden border border-white/10 hover:border-secondary/50 transition-all duration-500 hover:-translate-y-2">
-                    <div class="relative overflow-hidden">
-                        <img src="./assets/events.jpg" alt="Événements" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="absolute top-4 right-4 bg-secondary/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-secondary font-medium">
-                            Full-Stack
-                        </div>
-                    </div>
-                    
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3 group-hover:text-secondary transition-colors">EventManager</h3>
-                        <p class="text-gray-400 text-sm mb-4">Application complète de gestion d'événements avec système de réservation et paiement</p>
-                        
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs">Express</span>
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">React</span>
-                            <span class="px-3 py-1 bg-green-500/20 text-green-500 rounded-full text-xs">MongoDB</span>
-                        </div>
-
-                        <div class="flex items-center justify-between">
-                            <a href="https://github.com/ChefOnanga27/evenementielback" class="flex items-center space-x-2 text-secondary hover:text-secondary/80 transition-colors">
-                                <i class="fab fa-github"></i>
-                                <span class="text-sm">Code source</span>
-                            </a>
-                            <button class="px-4 py-2 bg-secondary/10 text-secondary rounded-lg hover:bg-secondary hover:text-white transition-all duration-300 text-sm">
-                                Voir plus
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Restaurant -->
-                <div class="project-card group relative bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-500 hover:-translate-y-2">
-                    <div class="relative overflow-hidden">
-                        <img src="./assets/restaurant.jpg" alt="Restaurant" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100
