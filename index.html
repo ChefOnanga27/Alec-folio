@@ -11,256 +11,186 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0EA5E9',
-                        secondary: '#7C3AED',
-                        accent: '#F59E0B',
-                        dark: '#0F172A',
-                        darker: '#020617'
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
-                        'slide-up': 'slideUp 0.8s ease-out',
-                        'fade-in': 'fadeIn 1s ease-out',
-                        'bounce-slow': 'bounce 3s infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-20px)' }
-                        },
-                        glow: {
-                            '0%': { boxShadow: '0 0 20px #0EA5E9' },
-                            '100%': { boxShadow: '0 0 40px #0EA5E9, 0 0 60px #0EA5E9' }
-                        },
-                        slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(50px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' }
-                        },
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' }
-                        }
+                        primary: '#ff6b35',
+                        secondary: '#f7931e',
+                        accent: '#ff8c42',
+                        warm: '#ffb347',
+                        dark: '#2d3748',
+                        darker: '#1a202c'
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-darker text-white overflow-x-hidden">
+<body class="bg-slate-50 text-gray-800 font-sans antialiased">
     
-    <!-- CURSOR PERSONNALISÉ -->
-    <div id="cursor" class="fixed w-6 h-6 bg-primary/30 rounded-full pointer-events-none z-[9999] transition-all duration-300 mix-blend-difference"></div>
-    
-    <!-- NAVIGATION MODERNE -->
-    <nav class="fixed top-0 w-full bg-darker/90 backdrop-blur-xl border-b border-white/10 z-50 transition-all duration-500" id="navbar">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <div class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                    AJ.dev
-                </div>
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
                 
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="nav-link relative px-4 py-2 transition-all duration-300 hover:text-primary">Accueil</a>
-                    <a href="#about" class="nav-link relative px-4 py-2 transition-all duration-300 hover:text-primary">À propos</a>
-                    <a href="#skills" class="nav-link relative px-4 py-2 transition-all duration-300 hover:text-primary">Compétences</a>
-                    <a href="#projects" class="nav-link relative px-4 py-2 transition-all duration-300 hover:text-primary">Projets</a>
-                    <a href="#contact" class="nav-link relative px-4 py-2 transition-all duration-300 hover:text-primary">Contact</a>
+                    <a href="#home" class="nav-link text-gray-600 hover:text-primary transition-colors duration-300">Accueil</a>
+                    <a href="#about" class="nav-link text-gray-600 hover:text-primary transition-colors duration-300">À propos</a>
+                    <a href="#skills" class="nav-link text-gray-600 hover:text-primary transition-colors duration-300">Compétences</a>
+                    <a href="#projects" class="nav-link text-gray-600 hover:text-primary transition-colors duration-300">Projets</a>
+                    <a href="#contact" class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 transition-colors duration-300">Contact</a>
                 </div>
 
-                <button id="menu-toggle" class="md:hidden text-2xl hover:text-primary transition-colors">
+                <button id="menu-toggle" class="md:hidden text-2xl text-gray-600">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
 
-<!-- MENU MOBILE -->
-<div id="mobile-menu" 
-     class="fixed inset-x-0 top-0 md:hidden bg-gray-900/95 backdrop-blur-xl border-b border-white/10 transform -translate-y-full transition-transform duration-300 z-50">
-  <div class="px-6 py-6 space-y-4">
-    <a href="#home" class="block py-2 text-white hover:text-cyan-400 transition-colors">Accueil</a>
-    <a href="#about" class="block py-2 text-white hover:text-cyan-400 transition-colors">À propos</a>
-    <a href="#skills" class="block py-2 text-white hover:text-cyan-400 transition-colors">Compétences</a>
-    <a href="#projects" class="block py-2 text-white hover:text-cyan-400 transition-colors">Projets</a>
-    <a href="#contact" class="block py-2 text-white hover:text-cyan-400 transition-colors">Contact</a>
-  </div>
-</div>
-
+        <!-- MENU MOBILE -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#home" class="block py-2 text-gray-600 hover:text-primary">Accueil</a>
+                <a href="#about" class="block py-2 text-gray-600 hover:text-primary">À propos</a>
+                <a href="#skills" class="block py-2 text-gray-600 hover:text-primary">Compétences</a>
+                <a href="#projects" class="block py-2 text-gray-600 hover:text-primary">Projets</a>
+                <a href="#contact" class="block py-2 text-gray-600 hover:text-primary">Contact</a>
+            </div>
+        </div>
     </nav>
 
-    <!-- HERO SECTION IMMERSIVE -->
-    <section id="home" class="min-h-screen flex items-center relative overflow-hidden">
-        <canvas id="hero-canvas" class="absolute inset-0 w-full h-full"></canvas>
-        
-        <!-- Gradient overlay -->
-        <div class="absolute inset-0 bg-gradient-to-br from-darker/80 via-transparent to-dark/60"></div>
-        
-        <div class="container mx-auto px-6 relative z-10">
+    <!-- HERO SECTION -->
+    <section id="home" class="pt-20 min-h-screen flex items-center bg-gradient-to-br from-orange-50 via-white to-amber-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 
                 <!-- Contenu Principal -->
                 <div class="space-y-8">
-                    <div class="space-y-4 animate-slide-up">
-                        <p class="text-accent font-medium text-lg">Bonjour, je suis</p>
-                        <h1 class="text-5xl lg:text-7xl font-bold leading-tight">
-                            <span class="bg-gradient-to-r from-white via-primary to-secondary bg-clip-text text-transparent">
-                                Alec Joraine
-                            </span>
-                            <br>
-                            <span class="text-2xl lg:text-3xl text-gray-300 font-light">
-                                NANG BITEGHE
-                            </span>
+                    <div class="inline-block px-4 py-2 bg-orange-100 text-orange-600 rounded-full text-sm font-medium">
+                        👋 Disponible pour de nouveaux projets
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                            Bonjour, je suis<br>
+                            <span class="text-primary">Alec Joraine</span><br>
+                            <span class="text-2xl lg:text-3xl text-gray-600 font-normal">NANG BITEGHE</span>
                         </h1>
-                        <p class="text-xl lg:text-2xl text-gray-400 font-light max-w-lg">
-                            Développeur <span class="text-primary font-semibold">Full-Stack</span> passionné par l'innovation technologique
+                        <p class="text-xl text-gray-600 max-w-lg">
+                            Développeur Full-Stack passionné, créant des expériences web modernes et performantes
                         </p>
                     </div>
 
                     <!-- Stats -->
-                    <div class="flex space-x-8 py-6">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-primary" id="projects-count">0</div>
-                            <div class="text-gray-400 text-sm">Projets</div>
+                    <div class="flex gap-8 py-6">
+                        <div>
+                            <div class="text-3xl font-bold text-primary">12+</div>
+                            <div class="text-gray-600 text-sm">Projets réalisés</div>
                         </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-secondary" id="experience-count">0</div>
-                            <div class="text-gray-400 text-sm">Années</div>
+                        <div>
+                            <div class="text-3xl font-bold text-secondary">3+</div>
+                            <div class="text-gray-600 text-sm">Années d'expérience</div>
                         </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-accent" id="tech-count">0</div>
-                            <div class="text-gray-400 text-sm">Technologies</div>
+                        <div>
+                            <div class="text-3xl font-bold text-accent">15+</div>
+                            <div class="text-gray-600 text-sm">Technologies</div>
                         </div>
                     </div>
 
                     <!-- CTA Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-4 pt-6">
-                        <button class="group px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-full font-semibold text-white hover:shadow-2xl hover:shadow-primary/25 transition-all duration-300 transform hover:-translate-y-1">
-                           <a href="./assets/cv.pdf" download
-     class="group px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full font-semibold text-white hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 transform hover:-translate-y-1">
-      <span class="flex items-center justify-center space-x-2">
-          <i class="fas fa-download group-hover:animate-bounce"></i>
-          <span>Télécharger CV</span>
-      </span>
-  </a>
-                        </button>
-                        <button class="px-8 py-4 border-2 border-primary text-primary rounded-full font-semibold hover:bg-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1">
-                            Mes Projets
-                        </button>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="./assets/cv.pdf" download class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white rounded-lg font-medium hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl">
+                            <i class="fas fa-download"></i>
+                            <span>Télécharger CV</span>
+                        </a>
+                        <a href="#projects" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary border-2 border-primary rounded-lg font-medium hover:bg-primary hover:text-white transition-all duration-300">
+                            <span>Voir mes projets</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
 
                     <!-- Social Links -->
-                    <div class="flex space-x-6 pt-6">
-                        <a href="https://wa.me/+24174692348" class="social-icon text-2xl text-gray-400 hover:text-primary transition-all duration-300 transform hover:-translate-y-1">
-                            <i class="fab fa-whatsapp"></i>
+                    <div class="flex gap-4 pt-4">
+                        <a href="https://wa.me/+24174692348" class="w-12 h-12 flex items-center justify-center bg-white rounded-lg shadow-md text-gray-600 hover:text-green-500 hover:shadow-lg transition-all duration-300">
+                            <i class="fab fa-whatsapp text-xl"></i>
                         </a>
-                        <a href="https://linkedin.com/in/alec-joraine-nang-biteghe-1b6b4a1b8/" class="social-icon text-2xl text-gray-400 hover:text-primary transition-all duration-300 transform hover:-translate-y-1">
-                            <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/in/alec-joraine-nang-biteghe-1b6b4a1b8/" class="w-12 h-12 flex items-center justify-center bg-white rounded-lg shadow-md text-gray-600 hover:text-blue-600 hover:shadow-lg transition-all duration-300">
+                            <i class="fab fa-linkedin text-xl"></i>
                         </a>
-                        <a href="https://github.com/chefOnanga27" class="social-icon text-2xl text-gray-400 hover:text-primary transition-all duration-300 transform hover:-translate-y-1">
-                            <i class="fab fa-github"></i>
+                        <a href="https://github.com/chefOnanga27" class="w-12 h-12 flex items-center justify-center bg-white rounded-lg shadow-md text-gray-600 hover:text-gray-900 hover:shadow-lg transition-all duration-300">
+                            <i class="fab fa-github text-xl"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Image Profile -->
                 <div class="relative">
                     <div class="relative w-80 h-80 mx-auto">
-                        <!-- Rings animés -->
-                        <div class="absolute inset-0 rounded-full border-2 border-primary/30 animate-pulse-slow"></div>
-                        <div class="absolute inset-4 rounded-full border-2 border-secondary/30 animate-pulse-slow" style="animation-delay: 1s;"></div>
-                        <div class="absolute inset-8 rounded-full border-2 border-accent/30 animate-pulse-slow" style="animation-delay: 2s;"></div>
-                        
-                        <!-- Image -->
-                        <div class="absolute inset-12 rounded-full overflow-hidden animate-glow">
+                        <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl rotate-6"></div>
+                        <div class="absolute inset-0 bg-white rounded-3xl shadow-2xl overflow-hidden">
                             <img src="./assets/Alec.jpg" alt="Alec Joraine" class="w-full h-full object-cover">
                         </div>
                     </div>
-                    
-                    <!-- Floating elements -->
-                    <div class="absolute -top-4 -left-4 w-8 h-8 bg-primary rounded-full animate-float opacity-60"></div>
-                    <div class="absolute -bottom-4 -right-4 w-6 h-6 bg-secondary rounded-full animate-float opacity-60" style="animation-delay: 1s;"></div>
-                    <div class="absolute top-1/2 -right-8 w-4 h-4 bg-accent rounded-full animate-float opacity-60" style="animation-delay: 2s;"></div>
                 </div>
-            </div>
-        </div>
-
-        <!-- Scroll indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
-            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-                <div class="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse"></div>
             </div>
         </div>
     </section>
 
     <!-- À PROPOS SECTION -->
-    <section id="about" class="py-20 relative">
-        <div class="container mx-auto px-6">
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-bold mb-4">
-                    <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                        À propos de moi
-                    </span>
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    À propos de moi
                 </h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-warm mx-auto"></div>
             </div>
 
             <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <!-- Image et info -->
                 <div class="relative">
-                    <div class="relative bg-gradient-to-br from-dark to-darker rounded-2xl p-8 border border-white/10">
-                        <img src="./assets/code.jpg" alt="Coding" class="w-full h-64 object-cover rounded-xl mb-6">
+                    <div class="bg-gradient-to-br from-blue-50 to-orange-50 rounded-2xl p-8 shadow-lg">
+                        <img src="./assets/code.jpg" alt="Coding" class="w-full h-64 object-cover rounded-xl mb-6 shadow-md">
                         
-                        <!-- Tech badges -->
                         <div class="flex flex-wrap gap-3">
-                            <span class="px-4 py-2 bg-primary/20 text-primary rounded-full text-sm font-medium">React</span>
-                            <span class="px-4 py-2 bg-secondary/20 text-secondary rounded-full text-sm font-medium">Node.js</span>
-                            <span class="px-4 py-2 bg-accent/20 text-accent rounded-full text-sm font-medium">Next.js</span>
-                            <span class="px-4 py-2 bg-green-500/20 text-green-500 rounded-full text-sm font-medium">Express</span>
-                             <span class="px-4 py-2 bg-green-500/20 text-green-500 rounded-full text-sm font-medium">Nest</span>
+                            <span class="px-4 py-2 bg-blue-100 text-primary rounded-lg text-sm font-medium">React</span>
+                            <span class="px-4 py-2 bg-purple-100 text-secondary rounded-lg text-sm font-medium">Node.js</span>
+                            <span class="px-4 py-2 bg-orange-100 text-warm rounded-lg text-sm font-medium">Next.js</span>
+                            <span class="px-4 py-2 bg-green-100 text-green-600 rounded-lg text-sm font-medium">Express</span>
+                            <span class="px-4 py-2 bg-green-100 text-green-600 rounded-lg text-sm font-medium">Nest</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Contenu texte -->
                 <div class="space-y-6">
-                    <div class="space-y-4">
-                        <p class="text-lg text-gray-300 leading-relaxed">
-                            Salut ! Je suis <span class="text-primary font-bold">Alec Joraine NANG BITEGHE</span>, 
-                            un développeur web et mobile passionné en pleine ascension. Actuellement certifie de 
-                            l'<span class="text-secondary font-semibold">École 241</span>, je perfectionne ma capacité à 
-                            <strong>apprendre à apprendre</strong> et à résoudre des problèmes complexes.
-                        </p>
-                        
-                        <p class="text-lg text-gray-300 leading-relaxed">
-                            Mon parcours est guidé par la passion de créer des 
-                            <span class="text-accent font-semibold">applications web performantes et optimisées</span>, 
-                            en utilisant les dernières technologies du web moderne.
-                        </p>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Salut ! Je suis <span class="text-primary font-semibold">Alec Joraine NANG BITEGHE</span>, 
+                        un développeur web et mobile passionné en pleine ascension. Actuellement certifié de 
+                        l'<span class="text-secondary font-semibold">École 241</span>, je perfectionne ma capacité à 
+                        apprendre et à résoudre des problèmes complexes.
+                    </p>
+                    
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Mon parcours est guidé par la passion de créer des applications web performantes et optimisées, 
+                        en utilisant les dernières technologies du web moderne.
+                    </p>
 
-                        <p class="text-lg text-gray-300 leading-relaxed">
-                            Je cherche constamment à améliorer mes compétences et à explorer de nouvelles technologies. 
-                            Ma philosophie : rendre l'expérience utilisateur fluide et agréable tout en maintenant 
-                            des standards de performance élevés.
-                        </p>
-                    </div>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Je cherche constamment à améliorer mes compétences et à explorer de nouvelles technologies. 
+                        Ma philosophie : rendre l'expérience utilisateur fluide et agréable tout en maintenant 
+                        des standards de performance élevés.
+                    </p>
 
-                    <!-- Highlight boxes -->
                     <div class="grid md:grid-cols-2 gap-4 mt-8">
-                        <div class="p-6 bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl border border-primary/20">
+                        <div class="p-6 bg-blue-50 rounded-xl border-l-4 border-primary">
                             <div class="text-primary text-2xl mb-3">
                                 <i class="fas fa-code"></i>
                             </div>
                             <h4 class="font-bold text-lg mb-2">Développement Full-Stack</h4>
-                            <p class="text-gray-400 text-sm">Applications web complètes avec React, Node.js et bases de données</p>
+                            <p class="text-gray-600 text-sm">Applications web complètes avec React, Node.js et bases de données</p>
                         </div>
                         
-                        <div class="p-6 bg-gradient-to-br from-secondary/10 to-secondary/5 rounded-xl border border-secondary/20">
-                            <div class="text-secondary text-2xl mb-3">
+                        <div class="p-6 bg-orange-50 rounded-xl border-l-4 border-warm">
+                            <div class="text-warm text-2xl mb-3">
                                 <i class="fas fa-mobile-alt"></i>
                             </div>
                             <h4 class="font-bold text-lg mb-2">Applications Mobiles</h4>
-                            <p class="text-gray-400 text-sm">Solutions mobiles modernes et responsive design</p>
+                            <p class="text-gray-600 text-sm">Solutions mobiles modernes et responsive design</p>
                         </div>
                     </div>
                 </div>
@@ -269,30 +199,27 @@
     </section>
 
     <!-- COMPÉTENCES SECTION -->
-    <section id="skills" class="py-20 bg-gradient-to-br from-dark to-darker">
-        <div class="container mx-auto px-6">
+    <section id="skills" class="py-20 bg-gradient-to-br from-blue-50 to-orange-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-bold mb-4">
-                    <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                        Compétences
-                    </span>
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    Compétences
                 </h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
-                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-warm mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
                     Technologies et outils que j'utilise pour créer des expériences digitales exceptionnelles
                 </p>
             </div>
 
-            <!-- Grille des compétences -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                 <!-- Frontend -->
-                <div class="skill-card group relative p-8 bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl border border-white/10 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2">
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-t-4 border-primary">
                     <div class="text-center">
-                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center group-hover:animate-pulse">
-                            <img src="./assets/nextjs.png" alt="Next.js" class="w-12 h-12 object-contain">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-xl flex items-center justify-center">
+                            <img src="./assets/nextjs.png" alt="Next.js" class="w-10 h-10 object-contain">
                         </div>
-                        <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Frontend</h3>
-                        <p class="text-gray-400 text-sm mb-4">Interfaces utilisateur modernes</p>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Frontend</h3>
+                        <p class="text-gray-600 text-sm mb-4">Interfaces modernes</p>
                         <div class="space-y-2 text-sm text-gray-500">
                             <div>React • Next.js</div>
                             <div>Tailwind CSS</div>
@@ -302,13 +229,13 @@
                 </div>
 
                 <!-- Backend -->
-                <div class="skill-card group relative p-8 bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl border border-white/10 hover:border-secondary/50 transition-all duration-500 hover:-translate-y-2">
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-t-4 border-secondary">
                     <div class="text-center">
-                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-secondary/20 to-secondary/10 rounded-2xl flex items-center justify-center group-hover:animate-pulse">
-                            <img src="./assets/api.jpg" alt="API" class="w-12 h-12 object-cover rounded-lg">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-purple-100 rounded-xl flex items-center justify-center">
+                            <img src="./assets/api.jpg" alt="API" class="w-10 h-10 object-cover rounded-lg">
                         </div>
-                        <h3 class="text-xl font-bold mb-2 group-hover:text-secondary transition-colors">Backend</h3>
-                        <p class="text-gray-400 text-sm mb-4">APIs robustes et sécurisées</p>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Backend</h3>
+                        <p class="text-gray-600 text-sm mb-4">APIs sécurisées</p>
                         <div class="space-y-2 text-sm text-gray-500">
                             <div>Node.js • Express</div>
                             <div>API REST</div>
@@ -318,13 +245,13 @@
                 </div>
 
                 <!-- Database -->
-                <div class="skill-card group relative p-8 bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl border border-white/10 hover:border-accent/50 transition-all duration-500 hover:-translate-y-2">
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-t-4 border-warm">
                     <div class="text-center">
-                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-accent/20 to-accent/10 rounded-2xl flex items-center justify-center group-hover:animate-pulse">
-                            <img src="./assets/data.jpg" alt="Database" class="w-12 h-12 object-cover rounded-lg">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-orange-100 rounded-xl flex items-center justify-center">
+                            <img src="./assets/data.jpg" alt="Database" class="w-10 h-10 object-cover rounded-lg">
                         </div>
-                        <h3 class="text-xl font-bold mb-2 group-hover:text-accent transition-colors">Base de Données</h3>
-                        <p class="text-gray-400 text-sm mb-4">Gestion des données efficace</p>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Base de Données</h3>
+                        <p class="text-gray-600 text-sm mb-4">Gestion efficace</p>
                         <div class="space-y-2 text-sm text-gray-500">
                             <div>MySQL • PostgreSQL</div>
                             <div>MongoDB</div>
@@ -333,30 +260,30 @@
                     </div>
                 </div>
 
-                <!-- DevOps -->
-                <div class="skill-card group relative p-8 bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl border border-white/10 hover:border-green-500/50 transition-all duration-500 hover:-translate-y-2">
+                <!-- Sécurité -->
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-t-4 border-green-500">
                     <div class="text-center">
-                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-green-500/20 to-green-500/10 rounded-2xl flex items-center justify-center group-hover:animate-pulse">
-                            <img src="./assets/auth.jpg" alt="Auth" class="w-12 h-12 object-cover rounded-lg">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-xl flex items-center justify-center">
+                            <img src="./assets/auth.jpg" alt="Auth" class="w-10 h-10 object-cover rounded-lg">
                         </div>
-                        <h3 class="text-xl font-bold mb-2 group-hover:text-green-500 transition-colors">Sécurité</h3>
-                        <p class="text-gray-400 text-sm mb-4">Authentification avancée</p>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Sécurité</h3>
+                        <p class="text-gray-600 text-sm mb-4">Authentification</p>
                         <div class="space-y-2 text-sm text-gray-500">
                             <div>OAuth • JWT</div>
                             <div>Bcrypt Hashing</div>
-                            <div>Security Best Practices</div>
+                            <div>Best Practices</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project Management -->
-                <div class="skill-card group relative p-8 bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl border border-white/10 hover:border-purple-500/50 transition-all duration-500 hover:-translate-y-2">
+                <!-- Gestion -->
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-t-4 border-purple-500">
                     <div class="text-center">
-                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-purple-500/20 to-purple-500/10 rounded-2xl flex items-center justify-center group-hover:animate-pulse">
-                            <img src="./assets/gestion.jpg" alt="Management" class="w-12 h-12 object-cover rounded-lg">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-purple-100 rounded-xl flex items-center justify-center">
+                            <img src="./assets/gestion.jpg" alt="Management" class="w-10 h-10 object-cover rounded-lg">
                         </div>
-                        <h3 class="text-xl font-bold mb-2 group-hover:text-purple-500 transition-colors">Gestion Projet</h3>
-                        <p class="text-gray-400 text-sm mb-4">Méthodologies agiles</p>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Gestion Projet</h3>
+                        <p class="text-gray-600 text-sm mb-4">Méthodologies agiles</p>
                         <div class="space-y-2 text-sm text-gray-500">
                             <div>Scrum • Kanban</div>
                             <div>Git Workflow</div>
@@ -369,192 +296,120 @@
     </section>
 
     <!-- PROJETS SECTION -->
-    <section id="projects" class="py-20">
-        <div class="container mx-auto px-6">
+    <section id="projects" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-bold mb-4">
-                    <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                        Mes Projets
-                    </span>
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    Mes Projets
                 </h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
-                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-                    Découvrez une sélection de projets qui démontrent mes compétences et ma passion pour le développement
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-warm mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Découvrez une sélection de projets qui démontrent mes compétences et ma passion
                 </p>
             </div>
 
-            <!-- Grille des projets -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Projet Ecommerce -->
-                <div class="project-card group relative bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2">
-                    <div class="relative overflow-hidden">
-                        <img src="./assets/FBK PUB 1.png" alt="Projet Médical" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="absolute top-4 right-4 bg-accent/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-accent font-medium">
+                <!-- Artiz -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="./assets/FBK PUB 1.png" alt="Artiz" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                             E-commerce
                         </div>
                     </div>
                     
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3 group-hover:text-accent transition-colors">Artiz</h3>
-                        <p class="text-gray-400 text-sm mb-4">Plateforme de vente en ligne de vente d'oeuvres artisanales</p>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900">Artiz</h3>
+                        <p class="text-gray-600 text-sm mb-4">Plateforme de vente en ligne d'œuvres artisanales</p>
                         
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-xs">React.js</span>
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">Tailwind</span>
-                            <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs">API</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">React.js</span>
+                            <span class="px-3 py-1 bg-blue-100 text-primary rounded-full text-xs">Tailwind</span>
+                            <span class="px-3 py-1 bg-purple-100 text-secondary rounded-full text-xs">API</span>
                         </div>
 
-                        <div class="flex items-center justify-between">
-                            <a href="https://artiz-ia.vercel.app/" class="flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span class="text-sm">Voir le site</span>
-                            </a>
-                        </div>
+                        <a href="https://artiz-ia.vercel.app/" class="inline-flex items-center gap-2 text-primary hover:text-blue-700 font-medium">
+                            <span>Voir le site</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Cuisine Platform -->
-                <div class="project-card group relative bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2">
-                    <div class="relative overflow-hidden">
-                        <img src="/assets/cuisine.png" alt="Cuisine" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="absolute top-4 right-4 bg-primary/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-primary font-medium">
+                <!-- Secret Culinaire -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="./assets/cuisine.png" alt="Cuisine" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
                             Gastronomie
                         </div>
                     </div>
                     
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Secret culinaire</h3>
-                        <p class="text-gray-400 text-sm mb-4">Plateforme de partage de recettes avec communauté d'utilisateurs et système de notation</p>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900">Secret Culinaire</h3>
+                        <p class="text-gray-600 text-sm mb-4">Plateforme de partage de recettes avec communauté</p>
                         
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">React</span>
-                            <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-xs">Social</span>
-                            <span class="px-3 py-1 bg-green-500/20 text-green-500 rounded-full text-xs">Community</span>
+                            <span class="px-3 py-1 bg-blue-100 text-primary rounded-full text-xs">React</span>
+                            <span class="px-3 py-1 bg-orange-100 text-warm rounded-full text-xs">Social</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">Community</span>
                         </div>
 
-                        <div class="flex items-center justify-between">
-                            <a href="https://secret-culinaire.vercel.app/" class="flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span class="text-sm">Voir le site</span>
-                            </a>
-                        </div>
+                        <a href="https://secret-culinaire.vercel.app/" class="inline-flex items-center gap-2 text-primary hover:text-blue-700 font-medium">
+                            <span>Voir le site</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Paradise Numerique -->
-                <div class="project-card group relative bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl overflow-hidden border border-white/10 hover:border-secondary/50 transition-all duration-500 hover:-translate-y-2">
-                    <div class="relative overflow-hidden">
-                        <img src="/assets/logo.png" alt="Parc Auto" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="absolute top-4 right-4 bg-secondary/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-secondary font-medium">
+                <!-- Paradise Numérique -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="./assets/logo.png" alt="Paradise" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-secondary text-white px-3 py-1 rounded-full text-sm font-medium">
                             Service
                         </div>
                     </div>
                     
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3 group-hover:text-secondary transition-colors">Site vitrine</h3>
-                        <p class="text-gray-400 text-sm mb-4">Site vitrine mettant en avant les services de cette agences</p>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900">Site Vitrine</h3>
+                        <p class="text-gray-600 text-sm mb-4">Site vitrine mettant en avant les services de l'agence</p>
                         
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs">Devis</span>
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">Analytics</span>
-                            <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-xs">Tracking</span>
+                            <span class="px-3 py-1 bg-purple-100 text-secondary rounded-full text-xs">Devis</span>
+                            <span class="px-3 py-1 bg-blue-100 text-primary rounded-full text-xs">Analytics</span>
+                            <span class="px-3 py-1 bg-orange-100 text-warm rounded-full text-xs">Tracking</span>
                         </div>
 
-                        <div class="flex items-center justify-between">
-                            <a href="https://paradisenumerique.vercel.app/" class="flex items-center space-x-2 text-secondary hover:text-secondary/80 transition-colors">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span class="text-sm">Voir le site</span>
-                            </a>
-                        </div>
+                        <a href="https://paradise-numerique.vercel.app/" class="inline-flex items-center gap-2 text-primary hover:text-blue-700 font-medium">
+                            <span>Voir le site</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- commerce storegabon -->
-                <div class="project-card group relative bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-500 hover:-translate-y-2">
-                    <div class="relative overflow-hidden">
-                        <img src="./assets/store.jpg" alt="École 241" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="absolute top-4 right-4 bg-accent/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-accent font-medium">
-                            e-commerce
+                <!-- Store Gabon -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="./assets/store.jpg" alt="Store" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            E-commerce
                         </div>
                     </div>
                     
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3 group-hover:text-accent transition-colors">Store Gabon Website</h3>
-                        <p class="text-gray-400 text-sm mb-4">Site web institutionnel moderne avec présentation des formations et système d'inscription</p>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900">Store Gabon</h3>
+                        <p class="text-gray-600 text-sm mb-4">Site e-commerce moderne avec système d'inscription</p>
                         
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-xs">React.js</span>
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">SEO</span>
-                            <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs">Responsive</span>
+                            <span class="px-3 py-1 bg-orange-100 text-warm rounded-full text-xs">React.js</span>
+                            <span class="px-3 py-1 bg-blue-100 text-primary rounded-full text-xs">SEO</span>
+                            <span class="px-3 py-1 bg-purple-100 text-secondary rounded-full text-xs">Responsive</span>
                         </div>
 
-                        <div class="flex items-center justify-between">
-                            <a href="https://storegabon.vercel.app/" class="flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span class="text-sm">Voir le site</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projet en cours -->
-                 <div class="project-card group relative bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-500 hover:-translate-y-2">
-                    <div class="relative overflow-hidden">
-                        <img src="./assets/logement.jpg" alt="École 241" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="absolute top-4 right-4 bg-accent/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-accent font-medium">
-                            Logement
-                        </div>
-                    </div>
-                    
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3 group-hover:text-accent transition-colors">Je demenage</h3>
-                        <p class="text-gray-400 text-sm mb-4">La plateforme gabonaise pour trouver votre nouveau logement</p>
-                        
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-xs">React.js</span>
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">SEO</span>
-                            <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs">Responsive</span>
-                        </div>
-
-                        <div class="flex items-center justify-between">
-                            <a href="https://je-demenage.vercel.app/" class="flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span class="text-sm">Voir le site</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card group relative bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-500 hover:-translate-y-2">
-                    <div class="relative overflow-hidden">
-                        <img src="./assets/med.png" alt="École 241" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="absolute top-4 right-4 bg-accent/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-accent font-medium">
-                            e-Sante
-                        </div>
-                    </div>
-                    
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3 group-hover:text-accent transition-colors">Medconnect</h3>
-                        <p class="text-gray-400 text-sm mb-4">Trouvez facilement des hôpitaux, cliniques, médecins spécialistes et pharmacies. Prenez rendez-vous en ligne et gérez vos documents médicaux en toute sécurité..</p>
-                        
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-xs">React.js</span>
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs">SEO</span>
-                            <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-xs">Responsive</span>
-                        </div>
-
-                        <div class="flex items-center justify-between">
-                            <a href="https://med-connect2.vercel.app/" class="flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span class="text-sm">Voir le site</span>
-                            </a>
-                        </div>
+                        <a href="https://med-connect2.vercel.app/" class="inline-flex items-center gap-2 text-primary hover:text-blue-700 font-medium">
+                            <span>Voir le site</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -562,103 +417,96 @@
     </section>
 
     <!-- CONTACT SECTION -->
-    <section id="contact" class="py-20 bg-gradient-to-br from-dark to-darker relative">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 opacity-5">
-            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25px 25px, rgba(14, 165, 233, 0.3) 2px, transparent 0), radial-gradient(circle at 75px 75px, rgba(124, 58, 237, 0.3) 2px, transparent 0); background-size: 100px 100px;"></div>
-        </div>
-
-        <div class="container mx-auto px-6 relative z-10">
+    <section id="contact" class="py-20 bg-gradient-to-br from-blue-50 to-orange-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-bold mb-4">
-                    <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                        Travaillons Ensemble
-                    </span>
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    Travaillons Ensemble
                 </h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
-                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-warm mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
                     Prêt à donner vie à votre projet ? Contactez-moi et discutons de vos idées !
                 </p>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-16 items-start">
-                <!-- Informations de contact -->
-                <div class="space-y-8">
-                    <div class="space-y-6">
-                        <div class="flex items-center space-x-4 p-6 bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl border border-white/10">
-                            <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-primary text-xl">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Info Contact -->
+                <div class="space-y-6">
+                    <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center text-primary text-xl">
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-lg">Email</h3>
-                                <p class="text-gray-400">nangbiteghe@gmail.com</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center space-x-4 p-6 bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl border border-white/10">
-                            <div class="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center text-secondary text-xl">
-                                <i class="fab fa-whatsapp"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-lg">WhatsApp</h3>
-                                <p class="text-gray-400">+241 74 69 23 48</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center space-x-4 p-6 bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl border border-white/10">
-                            <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center text-accent text-xl">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-lg">Localisation</h3>
-                                <p class="text-gray-400">Libreville, Gabon</p>
+                                <h3 class="font-semibold text-lg text-gray-900">Email</h3>
+                                <p class="text-gray-600">nangbiteghe@gmail.com</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Social Links -->
-                    <div class="flex space-x-4">
-                        <a href="https://linkedin.com/in/alec-joraine-nang-biteghe-1b6b4a1b8/" class="w-12 h-12 bg-primary/20 hover:bg-primary rounded-full flex items-center justify-center text-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1">
-                            <i class="fab fa-linkedin"></i>
+                    <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center text-green-600 text-xl">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-900">WhatsApp</h3>
+                                <p class="text-gray-600">+241 74 69 23 48</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-orange-100 rounded-lg flex items-center justify-center text-warm text-xl">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-900">Localisation</h3>
+                                <p class="text-gray-600">Libreville, Gabon</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 pt-4">
+                        <a href="https://linkedin.com/in/alec-joraine-nang-biteghe-1b6b4a1b8/" class="w-12 h-12 bg-white rounded-lg shadow-md flex items-center justify-center text-gray-600 hover:text-blue-600 hover:shadow-lg transition-all">
+                            <i class="fab fa-linkedin text-xl"></i>
                         </a>
-                        <a href="https://github.com/chefOnanga27" class="w-12 h-12 bg-secondary/20 hover:bg-secondary rounded-full flex items-center justify-center text-secondary hover:text-white transition-all duration-300 transform hover:-translate-y-1">
-                            <i class="fab fa-github"></i>
+                        <a href="https://github.com/chefOnanga27" class="w-12 h-12 bg-white rounded-lg shadow-md flex items-center justify-center text-gray-600 hover:text-gray-900 hover:shadow-lg transition-all">
+                            <i class="fab fa-github text-xl"></i>
                         </a>
-                        <a href="https://wa.me/+24174692348" class="w-12 h-12 bg-accent/20 hover:bg-accent rounded-full flex items-center justify-center text-accent hover:text-white transition-all duration-300 transform hover:-translate-y-1">
-                            <i class="fab fa-whatsapp"></i>
+                        <a href="https://wa.me/+24174692348" class="w-12 h-12 bg-white rounded-lg shadow-md flex items-center justify-center text-gray-600 hover:text-green-600 hover:shadow-lg transition-all">
+                            <i class="fab fa-whatsapp text-xl"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Formulaire de contact -->
-                <div class="bg-gradient-to-br from-dark/50 to-darker/50 rounded-2xl p-8 border border-white/10">
+                <!-- Formulaire -->
+                <div class="bg-white rounded-xl p-8 shadow-lg">
                     <form id="contact-form" class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label class="block text-sm font-medium text-gray-300">Nom complet</label>
-                                <input type="text" name="name" required class="w-full px-4 py-3 bg-darker/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-primary focus:outline-none transition-colors">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Nom complet</label>
+                                <input type="text" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition">
                             </div>
-                            <div class="space-y-2">
-                                <label class="block text-sm font-medium text-gray-300">Email</label>
-                                <input type="email" name="email" required class="w-full px-4 py-3 bg-darker/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-primary focus:outline-none transition-colors">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                <input type="email" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition">
                             </div>
                         </div>
 
-                        <div class="space-y-2">
-                            <label class="block text-sm font-medium text-gray-300">Sujet</label>
-                            <input type="text" name="subject" required class="w-full px-4 py-3 bg-darker/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-primary focus:outline-none transition-colors">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Sujet</label>
+                            <input type="text" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition">
                         </div>
 
-                        <div class="space-y-2">
-                            <label class="block text-sm font-medium text-gray-300">Message</label>
-                            <textarea name="message" rows="6" required class="w-full px-4 py-3 bg-darker/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-primary focus:outline-none transition-colors resize-none"></textarea>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea rows="5" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition resize-none"></textarea>
                         </div>
 
-                        <button type="submit" class="group w-full px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-xl font-semibold text-white hover:shadow-2xl hover:shadow-primary/25 transition-all duration-300 transform hover:-translate-y-1">
-                            <span class="flex items-center justify-center space-x-2">
-                                <span>Envoyer le message</span>
-                                <i class="fas fa-paper-plane group-hover:translate-x-1 transition-transform"></i>
-                            </span>
+                        <button type="submit" class="w-full px-8 py-4 bg-primary text-white rounded-lg font-medium hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl">
+                            Envoyer le message
                         </button>
                     </form>
                 </div>
@@ -667,230 +515,61 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-12 bg-darker border-t border-white/10">
-        <div class="container mx-auto px-6">
-            <div class="text-center">
-                <div class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">
-                    AJ.dev
+    <footer class="py-12 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-6">
+                <div class="text-2xl font-bold">
+                    <span class="text-primary">AJ</span><span class="text-white">.dev</span>
                 </div>
-                <p class="text-gray-400 mb-6">
+                <p class="text-gray-400 max-w-md mx-auto">
                     Développeur Full-Stack passionné par l'innovation et l'excellence technique
                 </p>
-                <div class="flex justify-center space-x-6 mb-6">
-                    <a href="#home" class="text-gray-400 hover:text-primary transition-colors">Accueil</a>
-                    <a href="#about" class="text-gray-400 hover:text-primary transition-colors">À propos</a>
-                    <a href="#skills" class="text-gray-400 hover:text-primary transition-colors">Compétences</a>
-                    <a href="#projects" class="text-gray-400 hover:text-primary transition-colors">Projets</a>
-                    <a href="#contact" class="text-gray-400 hover:text-primary transition-colors">Contact</a>
+                <div class="flex justify-center gap-8 text-sm">
+                    <a href="#home" class="text-gray-400 hover:text-white transition-colors">Accueil</a>
+                    <a href="#about" class="text-gray-400 hover:text-white transition-colors">À propos</a>
+                    <a href="#skills" class="text-gray-400 hover:text-white transition-colors">Compétences</a>
+                    <a href="#projects" class="text-gray-400 hover:text-white transition-colors">Projets</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a>
                 </div>
-                <div class="text-gray-500 text-sm">
+                <div class="text-gray-500 text-sm pt-6 border-t border-gray-800">
                     © 2024 Alec Joraine NANG BITEGHE. Tous droits réservés.
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script>
-        // Cursor personnalisé
-        const cursor = document.getElementById('cursor');
-        let mouseX = 0, mouseY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        function updateCursor() {
-            cursor.style.left = mouseX - 12 + 'px';
-            cursor.style.top = mouseY - 12 + 'px';
-            requestAnimationFrame(updateCursor);
-        }
-        updateCursor();
-
-        // Navigation mobile
+        // Menu Mobile Toggle
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
 
         menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('-translate-y-full');
+            mobileMenu.classList.toggle('hidden');
         });
 
-        // Navigation smooth scroll
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    mobileMenu.classList.add('hidden');
                 }
-                // Fermer le menu mobile après clic
-                mobileMenu.classList.add('-translate-y-full');
             });
         });
 
-        // Navbar background on scroll
+        // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
-                navbar.classList.add('bg-darker/95');
+                navbar.classList.add('shadow-md');
             } else {
-                navbar.classList.remove('bg-darker/95');
+                navbar.classList.remove('shadow-md');
             }
         });
 
-        // Animation des compteurs
-        function animateCounter(element, target) {
-            let count = 0;
-            const increment = target / 100;
-            const timer = setInterval(() => {
-                count += increment;
-                if (count >= target) {
-                    count = target;
-                    clearInterval(timer);
-                }
-                element.textContent = Math.floor(count);
-            }, 20);
-        }
-
-        // Observer pour déclencher les animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Animer les compteurs
-                    const projectsCount = document.getElementById('projects-count');
-                    const experienceCount = document.getElementById('experience-count');
-                    const techCount = document.getElementById('tech-count');
-
-                    if (entry.target.contains(projectsCount)) {
-                        animateCounter(projectsCount, 12);
-                        animateCounter(experienceCount, 3);
-                        animateCounter(techCount, 15);
-                    }
-                }
-            });
-        }, { threshold: 0.5 });
-
-        observer.observe(document.getElementById('home'));
-
-        // Animation Three.js pour le hero
-        let scene, camera, renderer, particles;
-
-        function initThreeJS() {
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            
-            const canvas = document.getElementById('hero-canvas');
-            renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-
-            // Particules
-            const geometry = new THREE.BufferGeometry();
-            const vertices = [];
-            const colors = [];
-
-            for (let i = 0; i < 1000; i++) {
-                vertices.push(
-                    (Math.random() - 0.5) * 2000,
-                    (Math.random() - 0.5) * 2000,
-                    (Math.random() - 0.5) * 2000
-                );
-
-                const color = new THREE.Color();
-                color.setHSL(0.5 + Math.random() * 0.5, 0.7, 0.5);
-                colors.push(color.r, color.g, color.b);
-            }
-
-            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-            geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-
-            const material = new THREE.PointsMaterial({
-                size: 3,
-                vertexColors: true,
-                transparent: true,
-                opacity: 0.8
-            });
-
-            particles = new THREE.Points(geometry, material);
-            scene.add(particles);
-
-            camera.position.z = 1000;
-
-            animate();
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-            
-            particles.rotation.x += 0.0005;
-            particles.rotation.y += 0.001;
-
-            renderer.render(scene, camera);
-        }
-
-        // Gestion du redimensionnement
-        window.addEventListener('resize', () => {
-            if (renderer) {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            }
-        });
-
-        // Initialiser Three.js
-        initThreeJS();
-
-        // Formulaire de contact
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simulation d'envoi
-            const button = this.querySelector('button[type="submit"]');
-            const originalText = button.innerHTML;
-            
-            button.innerHTML = `
-                <span class="flex items-center justify-center space-x-2">
-                    <i class="fas fa-spinner fa-spin"></i>
-                    <span>Envoi en cours...</span>
-                </span>
-            `;
-            button.disabled = true;
-
-            setTimeout(() => {
-                button.innerHTML = `
-                    <span class="flex items-center justify-center space-x-2">
-                        <i class="fas fa-check"></i>
-                        <span>Message envoyé !</span>
-                    </span>
-                `;
-                
-                setTimeout(() => {
-                    button.innerHTML = originalText;
-                    button.disabled = false;
-                    this.reset();
-                }, 2000);
-            }, 2000);
-        });
-
-        // Lazy loading pour les images
-        const images = document.querySelectorAll('img');
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.classList.add('animate-fade-in');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-
-        images.forEach(img => imageObserver.observe(img));
-
-        // Active link highlighting
+        // Active Link Highlighting
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-link');
 
@@ -898,8 +577,7 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 200)) {
+                if (scrollY >= sectionTop - 200) {
                     current = section.getAttribute('id');
                 }
             });
@@ -910,6 +588,25 @@
                     link.classList.add('text-primary');
                 }
             });
+        });
+
+        // Form Submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            
+            button.textContent = 'Envoi en cours...';
+            button.disabled = true;
+
+            setTimeout(() => {
+                button.textContent = 'Message envoyé !';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.disabled = false;
+                    this.reset();
+                }, 2000);
+            }, 1500);
         });
     </script>
 </body>
